@@ -126,7 +126,7 @@
 
     .accordion-content {
       max-height: 0; overflow: hidden;
-      transition: max-height 0.4s ease-out;
+      transition: max-height 300ms ease-in-out;
     }
     .accordion-item.active .accordion-content {
       max-height: 500px;
@@ -642,9 +642,13 @@
 
     /* Context transfer — ResizeObserver */
     const rObs = new ResizeObserver(([entry]) => {
-      if (entry.contentRect.width <= 768) renderAccordion();
+      const isMobile = entry.contentRect.width <= 768;
+      if (isMobile) renderAccordion();
     });
     rObs.observe(document.documentElement);
+
+    /* Initial render if already mobile */
+    if (window.innerWidth <= 768) renderAccordion();
 
     /* Bento hover tracking */
     document.querySelectorAll('.brut-card[data-index]').forEach(card => {
