@@ -313,29 +313,37 @@
     </section>
 
     <!-- Workflow -->
-    <section id="workflow" style="padding:7rem 24px;background:white;border-top:4px solid var(--oceanic-noir);border-bottom:4px solid var(--oceanic-noir)" aria-labelledby="workflow-title">
-      <div style="max-width:1280px;margin:0 auto">
-        <div style="display:flex;flex-direction:column;gap:3rem">
-          <h2 id="workflow-title" class="font-display" style="font-size:clamp(2.5rem,6vw,4.5rem)">HOW IT WORKS</h2>
-          <div style="display:flex;flex-direction:column;gap:4rem">
-            <div style="position:relative;padding-left:3rem;border-left:4px solid var(--forsythia)">
-              <span style="position:absolute;left:-1.5rem;top:-.5rem;font-family:var(--font-heading);font-size:5rem;font-weight:800;color:var(--forsythia);opacity:.25;line-height:1;pointer-events:none">01</span>
-              <h3 class="font-mono-raw" style="font-size:1.5rem;margin-bottom:.75rem">CONNECT YOUR SOURCES</h3>
-              <p style="font-size:1rem;max-width:560px;line-height:1.7;opacity:.7">Plug in any database, API, or file stream. Axon handles legacy SQL, modern cloud warehouses, and unstructured JSON streams — no pre-mapping required.</p>
+    <section id="workflow" style="padding:7rem 24px;background:var(--mystic-mint);border-top:4px solid var(--oceanic-noir);border-bottom:4px solid var(--oceanic-noir);position:relative" aria-labelledby="workflow-title">
+      <div style="max-width:1280px;margin:0 auto;position:relative">
+        <div style="display:flex;flex-direction:column;gap:4rem">
+          <h2 id="workflow-title" class="font-display" style="font-size:clamp(2.5rem,6vw,4.5rem);text-align:center">HOW IT WORKS</h2>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;position:relative" class="workflow-grid">
+            <div style="position:absolute;top:64px;left:calc(16.66% + 1rem);right:calc(16.66% + 1rem);height:4px;background:var(--oceanic-noir);z-index:0" class="workflow-line"></div>
+            <div class="brut-card" style="padding:2.5rem;text-align:center;background:white;position:relative;z-index:1;display:flex;flex-direction:column;align-items:center">
+              <div style="width:56px;height:56px;background:var(--forsythia);display:flex;align-items:center;justify-content:center;font-family:var(--font-heading);font-size:1.3rem;font-weight:800;color:var(--oceanic-noir);margin-bottom:1.5rem;box-shadow:4px 4px 0 var(--oceanic-noir)">01</div>
+              <h3 class="font-mono-raw" style="font-size:1.2rem;margin-bottom:1rem">CONNECT YOUR SOURCES</h3>
+              <p style="font-size:.9rem;line-height:1.7;opacity:.7">Plug in any database, API, or file stream. Axon handles legacy SQL, modern cloud warehouses, and unstructured JSON streams — no pre-mapping required.</p>
             </div>
-            <div style="position:relative;padding-left:3rem;border-left:4px solid var(--deep-saffron)">
-              <span style="position:absolute;left:-1.5rem;top:-.5rem;font-family:var(--font-heading);font-size:5rem;font-weight:800;color:var(--deep-saffron);opacity:.25;line-height:1;pointer-events:none">02</span>
-              <h3 class="font-mono-raw" style="font-size:1.5rem;margin-bottom:.75rem">AI MAPS YOUR DATA</h3>
-              <p style="font-size:1rem;max-width:560px;line-height:1.7;opacity:.7">Axon reads the content of your data, clusters related fields, and selects the optimal normalization path automatically.</p>
+            <div class="brut-card" style="padding:2.5rem;text-align:center;background:white;position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;transform:translateY(20px)">
+              <div style="width:56px;height:56px;background:var(--deep-saffron);display:flex;align-items:center;justify-content:center;font-family:var(--font-heading);font-size:1.3rem;font-weight:800;color:var(--oceanic-noir);margin-bottom:1.5rem;box-shadow:4px 4px 0 var(--oceanic-noir)">02</div>
+              <h3 class="font-mono-raw" style="font-size:1.2rem;margin-bottom:1rem">AI MAPS YOUR DATA</h3>
+              <p style="font-size:.9rem;line-height:1.7;opacity:.7">Axon reads the content of your data, clusters related fields, and selects the optimal normalization path automatically.</p>
             </div>
-            <div style="position:relative;padding-left:3rem;border-left:4px solid var(--forsythia)">
-              <span style="position:absolute;left:-1.5rem;top:-.5rem;font-family:var(--font-heading);font-size:5rem;font-weight:800;color:var(--forsythia);opacity:.25;line-height:1;pointer-events:none">03</span>
-              <h3 class="font-mono-raw" style="font-size:1.5rem;margin-bottom:.75rem">CLEAN DATA, DELIVERED</h3>
-              <p style="font-size:1rem;max-width:560px;line-height:1.7;opacity:.7">Validated data arrives at your destination in milliseconds. Your dashboards stay current. Your models stay sharp.</p>
+            <div class="brut-card" style="padding:2.5rem;text-align:center;background:white;position:relative;z-index:1;display:flex;flex-direction:column;align-items:center">
+              <div style="width:56px;height:56px;background:var(--forsythia);display:flex;align-items:center;justify-content:center;font-family:var(--font-heading);font-size:1.3rem;font-weight:800;color:var(--oceanic-noir);margin-bottom:1.5rem;box-shadow:4px 4px 0 var(--oceanic-noir)">03</div>
+              <h3 class="font-mono-raw" style="font-size:1.2rem;margin-bottom:1rem">CLEAN DATA, DELIVERED</h3>
+              <p style="font-size:.9rem;line-height:1.7;opacity:.7">Validated data arrives at your destination in milliseconds. Your dashboards stay current. Your models stay sharp.</p>
             </div>
           </div>
         </div>
       </div>
+      <style>
+        @media (max-width:768px) {
+          .workflow-grid { grid-template-columns:1fr !important; }
+          .workflow-grid .brut-card { transform:none !important; }
+          .workflow-line { display:none !important; }
+        }
+      </style>
     </section>
 
     <!-- Pricing -->
