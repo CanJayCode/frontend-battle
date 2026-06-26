@@ -385,6 +385,7 @@
       color: var(--forsythia);
       letter-spacing: .05em;
       opacity: 0; /* GSAP handles reveal */
+      will-change: opacity, transform;
     }
     .badge-dot {
       width: 6px; height: 6px;
@@ -401,12 +402,31 @@
       letter-spacing: -.03em;
       margin-bottom: 1.4rem;
       opacity: 0;
+      will-change: opacity, transform;
     }
     .hero-title .hi {
       background: linear-gradient(135deg, var(--forsythia) 20%, var(--deep-saffron) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+    }
+    .highlight-word {
+      position: relative;
+      display: inline-block;
+      white-space: nowrap;
+    }
+    .highlight-word::before {
+      content: '';
+      position: absolute;
+      bottom: 3px;
+      left: -5px;
+      right: -5px;
+      height: 12px;
+      background: var(--forsythia);
+      transform: rotate(-1.5deg);
+      z-index: -1;
+      border-radius: 3px;
+      opacity: .32;
     }
 
     .hero-subtitle {
@@ -416,6 +436,7 @@
       margin: 0 auto 2.5rem;
       line-height: 1.75;
       opacity: 0;
+      will-change: opacity, transform;
     }
 
     .hero-ctas {
@@ -426,6 +447,7 @@
       flex-wrap: wrap;
       margin-bottom: 4rem;
       opacity: 0;
+      will-change: opacity, transform;
     }
 
     .btn-hero-primary {
@@ -471,6 +493,7 @@
       justify-content: center;
       flex-wrap: wrap;
       opacity: 0;
+      will-change: opacity, transform;
     }
     .hero-stat {
       display: flex;
@@ -492,6 +515,224 @@
     }
     .hero-stat-value svg { width: 19px; height: 19px; }
     .hero-stat-label { font-size: .8rem; color: var(--mystic-mint); margin-top: 4px; }
+
+    /* =============================================
+       PROBLEM / SOLUTION CONTRAST
+    ============================================= */
+    #contrast {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 60vh;
+    }
+    .contrast-panel {
+      padding: 5rem 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .contrast-panel.left {
+      background: var(--oceanic-noir);
+    }
+    .contrast-panel.right {
+      background: var(--nocturnal);
+      border-left: 4px solid var(--forsythia);
+    }
+    .contrast-label {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      margin-bottom: 1.8rem;
+      letter-spacing: -.025em;
+    }
+    .contrast-panel.left .contrast-label { color: var(--arctic-powder); }
+    .contrast-panel.right .contrast-label { color: var(--forsythia); }
+    .contrast-list { display: flex; flex-direction: column; gap: .85rem; }
+    .contrast-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: .95rem;
+      line-height: 1.6;
+      color: var(--mystic-mint);
+    }
+    .contrast-item .ci-icon {
+      flex-shrink: 0;
+      width: 22px; height: 22px;
+      margin-top: 2px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 50%;
+      font-size: .7rem;
+      font-weight: 700;
+    }
+    .contrast-item .ci-icon.fail { background: rgba(255,80,80,.15); color: #ff6060; }
+    .contrast-item .ci-icon.pass { background: rgba(255,200,1,.15); color: var(--forsythia); }
+    .contrast-panel.right .contrast-item { color: var(--arctic-powder); }
+
+    /* =============================================
+       HOW IT WORKS
+    ============================================= */
+    #how-it-works {
+      padding: 7rem 0;
+      position: relative;
+    }
+    #how-it-works::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(217,232,226,.1), transparent);
+    }
+    .hiw-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .hiw-sticky {
+      position: sticky;
+      top: calc(var(--nav-height) + 2rem);
+    }
+    .hiw-sticky .section-title {
+      font-size: clamp(2.4rem, 5vw, 4.2rem);
+      line-height: 1.05;
+      white-space: pre-line;
+    }
+    .hiw-underline {
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--forsythia), var(--deep-saffron));
+      margin-top: .75rem;
+      border-radius: 2px;
+    }
+    .hiw-steps { display: flex; flex-direction: column; gap: 2rem; }
+    .hiw-step {
+      display: flex;
+      flex-direction: column;
+      gap: .35rem;
+      padding: 1.5rem 1.8rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(217,232,226,.07);
+      background: linear-gradient(140deg, rgba(17,76,90,.28), rgba(23,43,54,.52));
+      transition: all 150ms ease-out;
+      position: relative;
+      overflow: hidden;
+    }
+    .hiw-step:hover { border-color: rgba(255,200,1,.15); }
+    .hiw-step-number {
+      font-family: var(--font-heading);
+      font-size: clamp(3rem, 5vw, 5rem);
+      font-weight: 700;
+      line-height: 1;
+      color: var(--forsythia);
+      opacity: .15;
+      position: absolute;
+      top: .5rem; right: 1rem;
+      transition: opacity 150ms ease-out;
+    }
+    .hiw-step:hover .hiw-step-number { opacity: .9; }
+    .hiw-step-title {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--arctic-powder);
+      position: relative;
+      z-index: 1;
+    }
+    .hiw-step-desc {
+      font-size: .935rem;
+      color: var(--mystic-mint);
+      line-height: 1.7;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* =============================================
+       FINAL CTA
+    ============================================= */
+    #final-cta {
+      background: var(--forsythia);
+      padding: 6rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-deco {
+      position: absolute;
+      font-family: var(--font-heading);
+      font-size: clamp(8rem, 15vw, 16rem);
+      font-weight: 700;
+      color: rgba(23,43,54,.06);
+      pointer-events: none;
+      line-height: 1;
+      white-space: nowrap;
+      user-select: none;
+    }
+    .cta-deco-1 { top: -1rem; left: -1rem; }
+    .cta-deco-2 { bottom: -2rem; right: -1rem; }
+    .cta-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .cta-title {
+      font-family: var(--font-heading);
+      font-size: clamp(2.6rem, 5vw, 4.2rem);
+      font-weight: 700;
+      color: var(--oceanic-noir);
+      line-height: 1.08;
+      letter-spacing: -.03em;
+      margin-bottom: 1rem;
+    }
+    .cta-sub {
+      font-size: 1.1rem;
+      color: rgba(23,43,54,.7);
+      margin-bottom: 2.5rem;
+      line-height: 1.7;
+    }
+    .cta-form {
+      display: flex;
+      gap: .75rem;
+      max-width: 540px;
+      margin: 0 auto;
+    }
+    .cta-input {
+      flex: 1;
+      padding: 14px 18px;
+      border: 1px solid rgba(23,43,54,.12);
+      border-radius: var(--radius-md);
+      background: white;
+      font-family: var(--font-body);
+      font-size: .95rem;
+      color: var(--oceanic-noir);
+      outline: none;
+      transition: border-color 150ms ease-out, box-shadow 150ms ease-out;
+    }
+    .cta-input::placeholder { color: rgba(23,43,54,.4); }
+    .cta-input:focus {
+      border-color: var(--oceanic-noir);
+      box-shadow: 0 0 0 3px rgba(23,43,54,.1);
+    }
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: var(--oceanic-noir);
+      color: white;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: .95rem;
+      border-radius: var(--radius-md);
+      border: none;
+      cursor: pointer;
+      transition: all 150ms ease-out;
+      white-space: nowrap;
+    }
+    .btn-cta:hover { transform: scale(1.03); box-shadow: 0 4px 24px rgba(23,43,54,.25); }
+    .btn-cta svg { width: 16px; height: 16px; transition: transform 150ms ease-out; }
+    .btn-cta:hover svg { transform: translateX(3px); }
 
     /* =============================================
        FEATURES
@@ -1178,8 +1419,17 @@
         padding-top: 1.4rem;
       }
 
+      #contrast { grid-template-columns: 1fr; }
+      .contrast-panel { padding: 3rem 1.5rem; }
+      .contrast-panel.right { border-left: none; border-top: 4px solid var(--forsythia); }
+
+      .hiw-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .hiw-sticky { position: static; }
+
       .stats-bar { grid-template-columns: repeat(2, 1fr); }
       .testi-grid { grid-template-columns: 1fr; }
+
+      .cta-form { flex-direction: column; }
 
       .footer-inner { flex-direction: column; gap: 2rem; }
       .pricing-controls { flex-direction: column; gap: 1rem; }
@@ -1256,7 +1506,7 @@
         <h1 class="hero-title" id="hero-title">
           Automate Every<br>
           <span class="hi">Data Workflow</span><br>
-          at Machine Speed
+          at Machine <span class="highlight-word">Speed</span>
         </h1>
 
         <p class="hero-subtitle">
@@ -1269,7 +1519,11 @@
             <!-- chevron-right.svg -->
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" role="img" aria-label="Arrow right"><path d="m8.25 4.5 7.5 7.5-7.5 7.5"/></svg>
           </a>
-          <a href="#features" class="btn-hero-secondary interactive">Explore Features</a>
+          <a href="#features" class="btn-hero-secondary interactive">
+            <!-- chevron-left.svg -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true"><path d="M15.75 19.5 8.25 12l7.5-7.5"/></svg>
+            Explore Features
+          </a>
         </div>
 
         <div class="hero-stats" id="hero-stats" aria-label="Platform highlights">
@@ -1497,6 +1751,59 @@
       </div>
     </section>
 
+    <!-- ================== PROBLEM / SOLUTION ================== -->
+    <section id="contrast" aria-label="Old way versus NeuralFlow way">
+      <div class="contrast-panel left">
+        <h2 class="contrast-label">The Old Way</h2>
+        <ul class="contrast-list" role="list">
+          <li class="contrast-item"><span class="ci-icon fail" aria-hidden="true">✗</span>Manual ETL processing with brittle cron jobs</li>
+          <li class="contrast-item"><span class="ci-icon fail" aria-hidden="true">✗</span>Siloed data sources that never talk to each other</li>
+          <li class="contrast-item"><span class="ci-icon fail" aria-hidden="true">✗</span>Hours of engineering time on pipeline maintenance</li>
+          <li class="contrast-item"><span class="ci-icon fail" aria-hidden="true">✗</span>Batch updates — your data is always yesterday's news</li>
+          <li class="contrast-item"><span class="ci-icon fail" aria-hidden="true">✗</span>Custom code for every connector and transformation</li>
+        </ul>
+      </div>
+      <div class="contrast-panel right">
+        <h2 class="contrast-label">The NeuralFlow Way</h2>
+        <ul class="contrast-list" role="list">
+          <li class="contrast-item"><span class="ci-icon pass" aria-hidden="true">✓</span>Real-time ingestion &amp; transformation — zero config</li>
+          <li class="contrast-item"><span class="ci-icon pass" aria-hidden="true">✓</span>Unified data graph connecting every source</li>
+          <li class="contrast-item"><span class="ci-icon pass" aria-hidden="true">✓</span>Automated pipeline management — set &amp; forget</li>
+          <li class="contrast-item"><span class="ci-icon pass" aria-hidden="true">✓</span>Streaming architecture with sub-50ms latency</li>
+          <li class="contrast-item"><span class="ci-icon pass" aria-hidden="true">✓</span>200+ native integrations, no coding required</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================== HOW IT WORKS ================== -->
+    <section id="how-it-works" aria-labelledby="hiw-title">
+      <div class="container">
+        <div class="hiw-grid">
+          <div class="hiw-sticky">
+            <h2 class="section-title" id="hiw-title">How It<br>Works</h2>
+            <div class="hiw-underline" aria-hidden="true"></div>
+          </div>
+          <div class="hiw-steps">
+            <article class="hiw-step">
+              <span class="hiw-step-number" aria-hidden="true">01</span>
+              <h3 class="hiw-step-title">Connect your data sources</h3>
+              <p class="hiw-step-desc">Plug into any API, database, or file system. Choose from 200+ pre-built connectors or build a custom one in minutes.</p>
+            </article>
+            <article class="hiw-step">
+              <span class="hiw-step-number" aria-hidden="true">02</span>
+              <h3 class="hiw-step-title">Transform with AI-powered logic</h3>
+              <p class="hiw-step-desc">NeuralFlow's inference engine cleans, joins, enriches, and reshapes your data — no SQL or Python required. Point, click, and ship.</p>
+            </article>
+            <article class="hiw-step">
+              <span class="hiw-step-number" aria-hidden="true">03</span>
+              <h3 class="hiw-step-title">Deliver insights at machine speed</h3>
+              <p class="hiw-step-desc">Route processed data to dashboards, warehouses, or downstream apps in real-time. Latency measured in milliseconds, not minutes.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ================== PRICING ================== -->
     <section id="pricing" aria-labelledby="pricing-title">
       <div class="container">
@@ -1681,6 +1988,26 @@
       </div>
     </section>
 
+    <!-- ================== FINAL CTA ================== -->
+    <section id="final-cta" aria-labelledby="cta-title">
+      <div class="cta-deco cta-deco-1" aria-hidden="true">NEURALFLOW</div>
+      <div class="cta-deco cta-deco-2" aria-hidden="true">AI DATA</div>
+      <div class="container">
+        <div class="cta-content">
+          <h2 class="cta-title" id="cta-title">Ready to ship<br>at machine speed?</h2>
+          <p class="cta-sub">Join 50,000+ companies already using NeuralFlow. Start free, no credit card required.</p>
+          <form class="cta-form" action="#" method="post" onsubmit="event.preventDefault();alert('Thanks! We\'ll be in touch.');">
+            <input class="cta-input" type="email" placeholder="Enter your work email" required aria-label="Email address">
+            <button class="btn-cta" type="submit">
+              Get Started
+              <!-- chevron-right.svg -->
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true"><path d="m8.25 4.5 7.5 7.5-7.5 7.5"/></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <!-- ================== FOOTER ================== -->
@@ -1737,6 +2064,11 @@
       <div class="footer-bottom">
         <p class="footer-copy">© 2025 NeuralFlow, Inc. All rights reserved.</p>
         <div class="footer-legal">
+          <a href="#hero" style="display:inline-flex;align-items:center;gap:4px;">
+            <!-- chevron-up.svg -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" style="width:13px;height:13px;" aria-hidden="true"><path d="m4.5 15.75 7.5-7.5 7.5 7.5"/></svg>
+            Top
+          </a>
           <a href="#">Privacy</a>
           <a href="#">Terms</a>
           <a href="#">Cookies</a>
@@ -1745,12 +2077,10 @@
     </div>
   </footer>
 
-  <!-- Scroll to top — chevron-up.svg -->
+  <!-- Scroll to top — chevron-up-solid.svg -->
   <button id="scroll-top" class="interactive" aria-label="Scroll back to top" title="Back to top">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true"><path d="m4.5 15.75 7.5-7.5 7.5 7.5"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M11.47 7.72a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 1 1-1.06 1.06L12 9.31l-6.97 6.97a.75.75 0 0 1-1.06-1.06l7.5-7.5Z" clip-rule="evenodd"/></svg>
   </button>
-
-  <!-- chevron-up-solid.svg & chevron-left.svg used below in JS-driven UI -->
 
   <!-- GSAP (hero + scroll animations; Feature 2 sections use vanilla only) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" crossorigin="anonymous"></script>
@@ -1948,13 +2278,13 @@
     if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
       gsap.registerPlugin(ScrollTrigger)
 
-      /* Hero entrance sequence */
+      /* Hero entrance sequence — total orchestration <500ms */
       gsap.timeline({ defaults: { ease: 'power3.out' } })
-        .fromTo('#hero-badge',    { opacity: 0, y: 22  }, { opacity: 1, y: 0, duration: 0.6 })
-        .fromTo('.hero-title',    { opacity: 0, y: 34  }, { opacity: 1, y: 0, duration: 0.7 }, '-=0.3')
-        .fromTo('.hero-subtitle', { opacity: 0, y: 20  }, { opacity: 1, y: 0, duration: 0.6 }, '-=0.4')
-        .fromTo('#hero-ctas',     { opacity: 0, y: 16  }, { opacity: 1, y: 0, duration: 0.5 }, '-=0.35')
-        .fromTo('#hero-stats',    { opacity: 0, y: 14  }, { opacity: 1, y: 0, duration: 0.5 }, '-=0.25')
+        .fromTo('#hero-badge',    { opacity: 0, y: 16  }, { opacity: 1, y: 0, duration: 0.4 }, 0)
+        .fromTo('.hero-title',    { opacity: 0, y: 24  }, { opacity: 1, y: 0, duration: 0.4 }, 0.08)
+        .fromTo('.hero-subtitle', { opacity: 0, y: 16  }, { opacity: 1, y: 0, duration: 0.35 }, 0.14)
+        .fromTo('#hero-ctas',     { opacity: 0, y: 12  }, { opacity: 1, y: 0, duration: 0.3 }, 0.18)
+        .fromTo('#hero-stats',    { opacity: 0, y: 10  }, { opacity: 1, y: 0, duration: 0.3 }, 0.22)
 
       /* Features section header */
       gsap.from('#features .section-header', {
@@ -1988,6 +2318,35 @@
       gsap.from('.stats-bar', {
         scrollTrigger: { trigger: '.stats-bar', start: 'top 85%' },
         opacity: 0, y: 20, duration: 0.6, ease: 'power2.out'
+      })
+
+      /* Contrast panels */
+      gsap.from('#contrast .contrast-panel', {
+        scrollTrigger: { trigger: '#contrast', start: 'top 80%' },
+        opacity: 0, x: i => i ? 30 : -30, duration: 0.6, ease: 'power2.out'
+      })
+
+      /* How It Works step cards */
+      gsap.utils.toArray('.hiw-step').forEach((step, i) => {
+        gsap.fromTo(step,
+          { opacity: 0, y: 22 },
+          {
+            scrollTrigger: { trigger: '.hiw-grid', start: 'top 80%' },
+            opacity: 1, y: 0, duration: 0.55, delay: i * 0.1, ease: 'power2.out'
+          }
+        )
+      })
+
+      /* How It Works sticky title */
+      gsap.from('.hiw-sticky', {
+        scrollTrigger: { trigger: '.hiw-grid', start: 'top 82%' },
+        opacity: 0, x: -22, duration: 0.6, ease: 'power2.out'
+      })
+
+      /* Final CTA */
+      gsap.from('.cta-content', {
+        scrollTrigger: { trigger: '#final-cta', start: 'top 85%' },
+        opacity: 0, y: 28, duration: 0.6, ease: 'power2.out'
       })
 
       /* Testimonials */
