@@ -161,6 +161,7 @@
     @media (max-width: 768px) {
       .desktop-only { display: none !important; }
       .mobile-only { display: block !important; }
+      .footer-grid { grid-template-columns: 1fr 1fr !important; }
     }
     @media (min-width: 769px) {
       .mobile-only { display: none !important; }
@@ -177,9 +178,6 @@
       <a href="#hero" class="font-mono-raw" style="font-size:1.3rem;background:var(--oceanic-noir);color:white;padding:4px 14px;transform:rotate(-2deg);display:inline-block">
         AXON
       </a>
-      <button id="nav-search-btn" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;color:var(--oceanic-noir);border-radius:0;border:2px solid transparent;transition:all 150ms" aria-label="Search Axon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" style="width:17px;height:17px" role="img" aria-label="Search icon"><path fill="currentColor" d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"/></svg>
-      </button>
     </div>
 
     <nav class="desktop-only" style="display:flex;gap:2.5rem;font-family:var(--font-heading);font-size:.8rem;font-weight:600;text-transform:uppercase">
@@ -280,28 +278,31 @@
             </div>
           </div>
 
-          <div class="brut-card" style="grid-column:span 4;background:var(--nocturnal);color:white;padding:3rem;transform:rotate(-2deg)" data-index="1">
+          <div class="brut-card" style="grid-column:span 4;background:var(--nocturnal);color:white;padding:3rem;transform:rotate(-2deg);display:flex;flex-direction:column" data-index="1">
             <div style="width:52px;height:52px;background:rgba(255,200,1,.15);display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" style="width:26px;height:26px;color:var(--forsythia)" role="img" aria-label="Settings gear"><path d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93c.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 0 1 1.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204c.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78c-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 0 1-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107c-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93c-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 0 1-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204c-.165-.397-.505-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.109v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78c.165-.398.143-.854-.107-1.204l-.527-.738a1.125 1.125 0 0 1 .12-1.45l.773-.773a1.125 1.125 0 0 1 1.45-.12l.737.527c.35.25.807.272 1.204.107c.397-.165.71-.505.78-.929l.15-.894Z"/><path d="M15 12a3 3 0 1 1-6 0a3 3 0 0 1 6 0Z"/></svg>
             </div>
             <h3 class="font-mono-raw" style="font-size:1.1rem;margin-bottom:1rem">REAL-TIME PROCESSING</h3>
             <p style="font-size:.9rem;opacity:.8">Process millions of events per second at just 15ms overhead.</p>
+            <div style="margin-top:auto;padding-top:2rem;font-family:var(--font-heading);font-size:3rem;font-weight:800;color:rgba(255,200,1,.15);line-height:1">15ms</div>
           </div>
 
-          <div class="brut-card" style="grid-column:span 4;background:white;color:var(--oceanic-noir);padding:3rem;transform:rotate(1deg)" data-index="2">
-            <h3 class="font-mono-raw" style="font-size:1.3rem;margin-bottom:1.5rem">200+ CONNECTORS</h3>
-            <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.5rem">
-              <span style="background:var(--oceanic-noir);color:white;font-family:var(--font-heading);font-size:.6rem;padding:4px 8px;font-weight:600">AWS</span>
-              <span style="background:var(--oceanic-noir);color:white;font-family:var(--font-heading);font-size:.6rem;padding:4px 8px;font-weight:600">SAP</span>
-              <span style="background:var(--oceanic-noir);color:white;font-family:var(--font-heading);font-size:.6rem;padding:4px 8px;font-weight:600">SNOWFLAKE</span>
+          <div class="brut-card" style="grid-column:span 4;background:white;color:var(--oceanic-noir);padding:3rem;transform:rotate(1deg);display:flex;flex-direction:column;justify-content:space-between" data-index="2">
+            <div>
+              <h3 class="font-mono-raw" style="font-size:1.3rem;margin-bottom:1.5rem">200+ CONNECTORS</h3>
+              <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.5rem">
+                <span style="background:var(--oceanic-noir);color:white;font-family:var(--font-heading);font-size:.6rem;padding:4px 8px;font-weight:600">AWS</span>
+                <span style="background:var(--oceanic-noir);color:white;font-family:var(--font-heading);font-size:.6rem;padding:4px 8px;font-weight:600">SAP</span>
+                <span style="background:var(--oceanic-noir);color:white;font-family:var(--font-heading);font-size:.6rem;padding:4px 8px;font-weight:600">SNOWFLAKE</span>
               <span style="background:var(--oceanic-noir);color:white;font-family:var(--font-heading);font-size:.6rem;padding:4px 8px;font-weight:600">REDSHIFT</span>
             </div>
             <div style="width:52px;height:52px;background:rgba(255,200,1,.12);display:flex;align-items:center;justify-content:center">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="width:26px;height:26px;color:var(--forsythia)" role="img" aria-label="Link chain icon"><path fill="currentColor" fill-rule="evenodd" d="M19.902 4.098a3.75 3.75 0 0 0-5.304 0l-4.5 4.5a3.75 3.75 0 0 0 1.035 6.037.75.75 0 0 1-.646 1.353 5.25 5.25 0 0 1-1.449-8.45l4.5-4.5a5.25 5.25 0 1 1 7.424 7.424l-1.757 1.757a.75.75 0 1 1-1.06-1.06l1.757-1.757a3.75 3.75 0 0 0 0-5.304Zm-7.389 4.267a.75.75 0 0 1 1-.353 5.25 5.25 0 0 1 1.449 8.45l-4.5 4.5a5.25 5.25 0 1 1-7.424-7.424l1.757-1.757a.75.75 0 1 1 1.06 1.06l-1.757 1.757a3.75 3.75 0 1 0 5.304 5.304l4.5-4.5a3.75 3.75 0 0 0-1.035-6.037.75.75 0 0 1-.354-1Z" clip-rule="evenodd"/></svg>
             </div>
           </div>
+          </div>
 
-          <div class="brut-card" style="grid-column:span 8;background:var(--deep-saffron);color:var(--oceanic-noir);padding:3rem;transform:rotate(-1deg);border:2px solid var(--oceanic-noir)" data-index="3">
+          <div class="brut-card" style="grid-column:span 8;background:var(--deep-saffron);color:var(--oceanic-noir);padding:3rem 3rem 4rem 3rem;transform:rotate(-1deg);border:2px solid var(--oceanic-noir)" data-index="3">
             <div style="display:flex;align-items:center;gap:12px;margin-bottom:1.5rem">
               <div style="width:52px;height:52px;background:var(--oceanic-noir);display:flex;align-items:center;justify-content:center;flex-shrink:0">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" style="width:24px;height:24px;color:var(--forsythia)" role="img" aria-label="Cube icon"><path fill="currentColor" d="M8.372 1.349a.75.75 0 0 0-.744 0l-4.81 2.748L8 7.131l5.182-3.034zM14 5.357 8.75 8.43v6.005l4.872-2.784A.75.75 0 0 0 14 11zm-6.75 9.078V8.43L2 5.357V11c0 .27.144.518.378.651z"/></svg>
@@ -501,46 +502,76 @@
   </main>
 
   <!-- Footer -->
-  <footer style="background:var(--oceanic-noir);color:white;padding:5rem 24px;border-top:8px solid var(--forsythia)">
-    <div style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:3rem">
-      <div style="grid-column:span 2">
-        <span class="font-mono-raw" style="font-size:2rem;display:block;margin-bottom:2rem;font-style:italic">AXON_</span>
-        <p class="font-mono-raw" style="font-size:.75rem;opacity:.5;max-width:280px;line-height:1.8">
-          BUILT FOR TEAMS THAT SHIP FAST. CONNECT ANY SOURCE. TRUST EVERY ROW.
-        </p>
-        <div style="margin-top:1.5rem">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" style="width:14px;height:14px;opacity:.4;display:inline-block;vertical-align:middle;margin-right:4px" role="img" aria-label="Arrow up"><path d="m4.5 15.75 7.5-7.5 7.5 7.5"/></svg>
-          <span class="font-mono-raw" style="font-size:.6rem;opacity:.4;vertical-align:middle">BACK TO TOP</span>
+  <footer style="background:var(--oceanic-noir);color:white;padding:5rem 24px 3rem;border-top:8px solid var(--forsythia)">
+    <div style="max-width:1280px;margin:0 auto">
+
+      <!-- Top grid -->
+      <div class="footer-grid" style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:4rem;margin-bottom:4rem">
+
+        <!-- Brand col -->
+        <div>
+          <span class="font-mono-raw" style="font-size:1.8rem;display:block;margin-bottom:1rem;font-style:italic;color:white">AXON_</span>
+          <p style="font-family:var(--font-body);font-size:.9rem;opacity:.5;max-width:280px;line-height:1.8;margin-bottom:2rem">
+            The AI data pipeline built for engineering teams that move fast. Connect any source, clean automatically, ship anywhere.
+          </p>
+          <div style="display:flex;gap:.75rem;margin-bottom:2rem">
+            <a href="#" aria-label="Twitter" style="width:36px;height:36px;border:2px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;transition:border-color 150ms;font-size:1rem"><iconify-icon icon="mdi:twitter"></iconify-icon></a>
+            <a href="#" aria-label="GitHub" style="width:36px;height:36px;border:2px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;transition:border-color 150ms;font-size:1rem"><iconify-icon icon="mdi:github"></iconify-icon></a>
+            <a href="#" aria-label="LinkedIn" style="width:36px;height:36px;border:2px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;transition:border-color 150ms;font-size:1rem"><iconify-icon icon="mdi:linkedin"></iconify-icon></a>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;font-family:var(--font-heading);font-size:.6rem;opacity:.3">
+            <div style="width:6px;height:6px;border-radius:50%;background:var(--forsythia);opacity:1"></div>
+            ALL SYSTEMS OPERATIONAL
+          </div>
+        </div>
+
+        <!-- Product col -->
+        <div>
+          <h4 class="font-mono-raw" style="font-size:.75rem;margin-bottom:1.5rem;color:var(--forsythia);letter-spacing:.1em">PRODUCT</h4>
+          <ul style="display:flex;flex-direction:column;gap:.9rem;font-family:var(--font-heading);font-size:.7rem;opacity:.55">
+            <li><a href="#features" style="transition:opacity 150ms;display:block" onmouseover="this.style.opacity=1;this.style.color='var(--forsythia)'" onmouseout="this.style.opacity='';this.style.color=''">Features</a></li>
+            <li><a href="#pricing" style="transition:opacity 150ms;display:block" onmouseover="this.style.opacity=1;this.style.color='var(--forsythia)'" onmouseout="this.style.opacity='';this.style.color=''">Pricing</a></li>
+            <li><a href="#workflow" style="transition:opacity 150ms;display:block" onmouseover="this.style.opacity=1;this.style.color='var(--forsythia)'" onmouseout="this.style.opacity='';this.style.color=''">How It Works</a></li>
+            <li><a href="#" style="transition:opacity 150ms;display:block" onmouseover="this.style.opacity=1;this.style.color='var(--forsythia)'" onmouseout="this.style.opacity='';this.style.color=''">Changelog</a></li>
+            <li><a href="#" style="transition:opacity 150ms;display:block;display:flex;align-items:center;gap:6px" onmouseover="this.style.opacity=1;this.style.color='var(--forsythia)'" onmouseout="this.style.opacity='';this.style.color=''">Roadmap <span style="background:var(--forsythia);color:var(--oceanic-noir);font-size:.5rem;padding:1px 5px;font-weight:700">NEW</span></a></li>
+          </ul>
+        </div>
+
+        <!-- Developers col -->
+        <div>
+          <h4 class="font-mono-raw" style="font-size:.75rem;margin-bottom:1.5rem;color:var(--deep-saffron);letter-spacing:.1em">DEVELOPERS</h4>
+          <ul style="display:flex;flex-direction:column;gap:.9rem;font-family:var(--font-heading);font-size:.7rem;opacity:.55">
+            <li><a href="#" style="transition:opacity 150ms;display:block" onmouseover="this.style.opacity=1;this.style.color='var(--forsythia)'" onmouseout="this.style.opacity='';this.style.color=''">Documentation</a></li>
+            <li><a href="#" style="transition:opacity 150ms;display:block" onmouseover="this.style.opacity=1;this.style.color='var(--forsythia)'" onmouseout="this.style.opacity='';this.style.color=''">API Reference</a></li>
+            <li><a href="#" style="transition:opacity 150ms;display:block" onmouseover="this.style.opacity=1;this.style.color='var(--forsythia)'" onmouseout="this.style.opacity='';this.style.color=''">SDKs</a></li>
+            <li><a href="#" style="transition:opacity 150ms;display:block" onmouseover="this.style.opacity=1;this.style.color='var(--forsythia)'" onmouseout="this.style.opacity='';this.style.color=''">Status Page</a></li>
+            <li><a href="#" style="transition:opacity 150ms;display:block" onmouseover="this.style.opacity=1;this.style.color='var(--forsythia)'" onmouseout="this.style.opacity='';this.style.color=''">GitHub</a></li>
+          </ul>
+        </div>
+
+        <!-- Company col -->
+        <div>
+          <h4 class="font-mono-raw" style="font-size:.75rem;margin-bottom:1.5rem;color:var(--mystic-mint);letter-spacing:.1em">COMPANY</h4>
+          <ul style="display:flex;flex-direction:column;gap:.9rem;font-family:var(--font-heading);font-size:.7rem;opacity:.55">
+            <li><a href="#" style="transition:opacity 150ms;display:block" onmouseover="this.style.opacity=1;this.style.color='var(--forsythia)'" onmouseout="this.style.opacity='';this.style.color=''">About</a></li>
+            <li><a href="#" style="transition:opacity 150ms;display:block" onmouseover="this.style.opacity=1;this.style.color='var(--forsythia)'" onmouseout="this.style.opacity='';this.style.color=''">Blog</a></li>
+            <li><a href="#" style="transition:opacity 150ms;display:block" onmouseover="this.style.opacity=1;this.style.color='var(--forsythia)'" onmouseout="this.style.opacity='';this.style.color=''">Careers <span style="background:var(--deep-saffron);color:var(--oceanic-noir);font-size:.5rem;padding:1px 5px;font-weight:700">HIRING</span></a></li>
+            <li><a href="#" style="transition:opacity 150ms;display:block" onmouseover="this.style.opacity=1;this.style.color='var(--forsythia)'" onmouseout="this.style.opacity='';this.style.color=''">Press Kit</a></li>
+            <li><a href="#" style="transition:opacity 150ms;display:block" onmouseover="this.style.opacity=1;this.style.color='var(--forsythia)'" onmouseout="this.style.opacity='';this.style.color=''">Contact</a></li>
+          </ul>
         </div>
       </div>
-      <div>
-        <h4 class="font-mono-raw" style="font-size:.9rem;margin-bottom:2rem;color:var(--forsythia)">MANIFEST</h4>
-        <ul style="display:flex;flex-direction:column;gap:1rem;font-family:var(--font-heading);font-size:.65rem;opacity:.6;text-transform:uppercase">
-          <li>
-            <a href="#features" style="display:flex;align-items:center;gap:6px;transition:color 150ms">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" style="width:12px;height:12px;opacity:.6" role="img" aria-label="Link external"><path d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244"/></svg>
-              CAPABILITIES
-            </a>
-          </li>
-          <li><a href="#workflow" style="display:flex;align-items:center;gap:6px;transition:color 150ms">INFRASTRUCTURE</a></li>
-          <li><a href="#" style="display:flex;align-items:center;gap:6px;transition:color 150ms">DOCS</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="font-mono-raw" style="font-size:.9rem;margin-bottom:2rem;color:var(--deep-saffron)">NODES</h4>
-        <div style="display:flex;gap:1rem;font-size:1.5rem">
-          <a href="#" aria-label="Twitter"><iconify-icon icon="mdi:twitter"></iconify-icon></a>
-          <a href="#" aria-label="GitHub"><iconify-icon icon="mdi:github"></iconify-icon></a>
-          <a href="#" aria-label="LinkedIn"><iconify-icon icon="mdi:linkedin"></iconify-icon></a>
+
+      <!-- Divider -->
+      <div style="border-top:1px solid rgba(255,255,255,.08);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem">
+        <span style="font-family:var(--font-heading);font-size:.6rem;opacity:.3">© 2026 AXON TECHNOLOGIES LTD. ALL RIGHTS RESERVED.</span>
+        <div style="display:flex;gap:2rem;font-family:var(--font-heading);font-size:.6rem;opacity:.3">
+          <a href="#" style="transition:opacity 150ms" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=''">Privacy Policy</a>
+          <a href="#" style="transition:opacity 150ms" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=''">Terms of Service</a>
+          <a href="#" style="transition:opacity 150ms" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=''">Cookie Policy</a>
         </div>
       </div>
-    </div>
-    <div style="max-width:1280px;margin:0 auto;margin-top:4rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;font-family:var(--font-heading);font-size:.6rem;opacity:.3">
-      <span>© 2026 AXON TECHNOLOGIES LTD.</span>
-      <span style="display:flex;gap:2rem">
-        <a href="#">PRIVACY</a>
-        <a href="#">TERMS</a>
-      </span>
+
     </div>
   </footer>
 
@@ -711,8 +742,22 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
+    const sections = ['hero','features','workflow','pricing'];
+    const navLinks = document.querySelectorAll('.nav-link');
+
     window.addEventListener('scroll', () => {
       document.getElementById('scroll-top').classList.toggle('visible', window.scrollY > 500);
+      let current = '';
+      sections.forEach(id => {
+        const el = document.getElementById(id);
+        if (el && window.scrollY >= el.offsetTop - 100) current = id;
+      });
+      navLinks.forEach(link => {
+        const href = link.getAttribute('href').replace('#','');
+        link.style.textDecorationLine = href === current ? 'underline' : '';
+        link.style.textDecorationThickness = href === current ? '4px' : '';
+        link.style.textDecorationColor = href === current ? 'var(--forsythia)' : '';
+      });
     }, { passive: true });
 
     document.querySelectorAll('a[href^="#"]').forEach(a => {
@@ -720,6 +765,16 @@
         const target = document.querySelector(a.getAttribute('href'));
         if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
       });
+    });
+
+    document.getElementById('hero-cta-btn').addEventListener('click', () => {
+      document.getElementById('pricing').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+    document.getElementById('hero-secondary-btn').addEventListener('click', () => {
+      document.getElementById('workflow').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+    document.getElementById('final-cta-btn').addEventListener('click', () => {
+      document.getElementById('pricing').scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 
     /* ============================================================
@@ -740,7 +795,7 @@
       gsap.utils.toArray('#desktop-bento .brut-card').forEach((card, i) => {
         gsap.from(card, {
           scrollTrigger: { trigger: card, start: 'top 90%' },
-          y: 50, opacity: 0, rotate: (Math.random() - 0.5) * 6, duration: 0.8, delay: i * 0.1, ease: 'power2.out'
+          y: 50, opacity: 0, duration: 0.8, delay: i * 0.1, ease: 'power2.out'
         });
       });
 
