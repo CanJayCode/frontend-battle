@@ -3,27 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NeuralFlow | AI-Powered Data Automation Platform</title>
-  <meta name="description" content="Automate your data workflows with NeuralFlow — the AI platform that processes, transforms, and delivers insights at machine speed.">
-  <meta name="keywords" content="AI automation, data platform, machine learning, workflow automation, data pipeline, neural network, SaaS">
-  <meta property="og:title" content="NeuralFlow | AI Data Automation">
-  <meta property="og:description" content="Automate your data workflows with NeuralFlow — the AI platform that processes, transforms, and delivers insights at machine speed.">
+  <title>Axon | AI-Driven Data Automation Platform</title>
+  <meta name="description" content="Axon automates your entire data pipeline — ingest any format, clean with AI, and deliver to your warehouse in milliseconds. Built for engineering teams that move fast.">
+  <meta name="keywords" content="AI data automation, data pipeline platform, real-time data processing, ETL automation, data orchestration, machine learning pipeline">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Axon Technologies">
+
+  <meta property="og:title" content="Axon | AI-Driven Data Automation Platform">
+  <meta property="og:description" content="Ingest any format. Clean with AI. Deliver to your warehouse in milliseconds.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://neuralflow.vercel.app">
-  <meta property="og:image" content="https://neuralflow.vercel.app/og-image.png">
+  <meta property="og:url" content="https://frontend-battle-axon.vercel.app">
+  <meta property="og:image" content="https://frontend-battle-axon.vercel.app/og-image.png">
+  <meta property="og:site_name" content="Axon">
+
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="NeuralFlow | AI Data Automation">
-  <meta name="twitter:description" content="Automate your data workflows with NeuralFlow — the AI platform that processes, transforms, and delivers insights at machine speed.">
-  <link rel="canonical" href="https://neuralflow.vercel.app">
+  <meta name="twitter:title" content="Axon | AI-Driven Data Automation Platform">
+  <meta name="twitter:description" content="Ingest any format. Clean with AI. Deliver to your warehouse in milliseconds.">
+  <meta name="twitter:image" content="https://frontend-battle-axon.vercel.app/og-image.png">
+
+  <link rel="canonical" href="https://frontend-battle-axon.vercel.app">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" crossorigin="anonymous"></script>
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 
   <style>
-    /* =============================================
-       DESIGN TOKENS
-    ============================================= */
     :root {
       --forsythia:     #FFC801;
       --deep-saffron:  #FF9932;
@@ -34,2337 +42,689 @@
 
       --font-heading: 'JetBrains Mono', monospace;
       --font-body:    'Inter', sans-serif;
-
-      --nav-height: 68px;
-      --radius-sm:  8px;
-      --radius-md:  14px;
-      --radius-lg:  20px;
-      --radius-xl:  28px;
-
-      --shadow-card: 0 4px 24px rgba(0,0,0,.3);
-      --shadow-lift: 0 12px 48px rgba(0,0,0,.4);
-      --glow-gold:   0 0 40px rgba(255,200,1,.28);
     }
 
-    /* =============================================
-       RESET & BASE
-    ============================================= */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html { scroll-behavior: smooth; font-size: 16px; }
-
+    html { scroll-behavior: smooth; }
     body {
-      background: var(--oceanic-noir);
-      color: var(--arctic-powder);
       font-family: var(--font-body);
+      background: var(--arctic-powder);
+      color: var(--oceanic-noir);
       line-height: 1.6;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
     }
-
-    img, svg { display: block; }
     a { color: inherit; text-decoration: none; }
     button { cursor: pointer; border: none; background: none; font-family: var(--font-body); }
     ul { list-style: none; }
+    img, svg { display: block; }
 
-    /* Subtle noise grain */
-    body::after {
-      content: '';
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 9999;
-      opacity: .025;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
-    }
-
-    /* Micro-interactions */
-    .interactive { transition: all 150ms ease-out; }
-
-    /* =============================================
-       TYPOGRAPHY
-    ============================================= */
-    h1, h2, h3, h4 {
+    h1, h2, h3 {
       font-family: var(--font-heading);
       line-height: 1.15;
       letter-spacing: -.025em;
     }
 
-    .section-label {
-      font-family: var(--font-body);
-      font-size: .72rem;
-      font-weight: 600;
-      letter-spacing: .13em;
-      text-transform: uppercase;
-      color: var(--forsythia);
+    .noise-bg {
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      opacity: 0.08; position: fixed; inset: 0; pointer-events: none; z-index: 99;
     }
 
-    .section-title {
-      font-family: var(--font-heading);
-      font-size: clamp(1.85rem, 4vw, 2.8rem);
-      font-weight: 700;
-      color: var(--arctic-powder);
-      margin-top: .5rem;
+    .concrete-bg {
+      background: var(--arctic-powder); position: relative;
+    }
+    .concrete-bg::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: url("https://www.transparenttextures.com/patterns/concrete-wall.png");
+      opacity: 0.1; pointer-events: none;
     }
 
-    .section-desc {
-      font-size: 1.05rem;
-      color: var(--mystic-mint);
-      margin-top: .9rem;
-      max-width: 580px;
-      line-height: 1.75;
-    }
-
-    /* =============================================
-       LAYOUT
-    ============================================= */
-    .container {
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    .section-header { margin-bottom: 3rem; }
-
-    /* =============================================
-       HEADER / NAV
-    ============================================= */
-    header {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      height: var(--nav-height);
-      transition: background .3s, border-color .3s, backdrop-filter .3s;
-    }
-
-    header.scrolled {
-      background: rgba(23,43,54,.82);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(217,232,226,.07);
-    }
-
-    nav {
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 2rem;
-      padding: 0 28px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .nav-logo {
-      font-family: var(--font-heading);
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: var(--arctic-powder);
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      flex-shrink: 0;
-    }
-
-    .logo-dot {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--forsythia), var(--deep-saffron));
-      animation: pulse-dot 2.2s ease-in-out infinite;
-    }
-
-    @keyframes pulse-dot {
-      0%,100% { transform: scale(1); opacity: 1; }
-      50%      { transform: scale(1.5); opacity: .65; }
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-    }
-
-    .nav-link {
-      font-size: .88rem;
-      font-weight: 500;
-      color: var(--mystic-mint);
-      transition: color 150ms ease-out;
-      position: relative;
-    }
-
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: -3px; left: 0; right: 0;
-      height: 1px;
-      background: var(--forsythia);
-      transform: scaleX(0);
-      transition: transform 150ms ease-out;
-      transform-origin: left;
-    }
-
-    .nav-link:hover { color: var(--arctic-powder); }
-    .nav-link:hover::after { transform: scaleX(1); }
-
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: .75rem;
-    }
-
-    /* Search icon button */
-    #nav-search-btn {
-      width: 36px; height: 36px;
-      display: flex; align-items: center; justify-content: center;
-      border-radius: var(--radius-sm);
-      color: var(--mystic-mint);
-      transition: all 150ms ease-out;
-    }
-    #nav-search-btn:hover { background: rgba(255,255,255,.06); color: var(--arctic-powder); }
-    #nav-search-btn svg { width: 17px; height: 17px; }
-
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 9px 20px;
-      background: linear-gradient(135deg, var(--forsythia), var(--deep-saffron));
-      color: var(--oceanic-noir);
-      font-weight: 700;
-      font-size: .875rem;
-      border-radius: var(--radius-sm);
-      transition: all 150ms ease-out;
-    }
-    .btn-primary:hover { transform: translateY(-1px); box-shadow: var(--glow-gold); }
-
-    .btn-hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      padding: 8px;
-      border-radius: var(--radius-sm);
-      color: var(--arctic-powder);
-    }
-    .btn-hamburger span {
-      display: block;
-      width: 22px; height: 2px;
-      background: currentColor;
-      border-radius: 2px;
-      transition: all 300ms ease-in-out;
-    }
-
-    /* =============================================
-       MOBILE MENU
-    ============================================= */
-    #mobile-menu {
-      position: fixed;
-      inset: 0;
-      z-index: 98;
-      background: var(--oceanic-noir);
-      display: flex;
-      flex-direction: column;
-      padding: 100px 32px 40px;
-      transform: translateX(100%);
-      transition: transform 300ms ease-in-out;
-    }
-    #mobile-menu.open { transform: translateX(0); }
-
-    #mobile-menu-close {
-      position: absolute;
-      top: 16px; right: 20px;
-      width: 44px; height: 44px;
-      display: flex; align-items: center; justify-content: center;
-      border-radius: var(--radius-sm);
-      color: var(--arctic-powder);
-      border: 1px solid rgba(217,232,226,.12);
-    }
-    #mobile-menu-close svg { width: 20px; height: 20px; }
-
-    .mobile-nav-links {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      margin-bottom: auto;
-    }
-
-    .mobile-nav-link {
-      font-family: var(--font-heading);
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: var(--arctic-powder);
-      padding: .6rem 0;
-      border-bottom: 1px solid rgba(217,232,226,.07);
-      transition: color 150ms ease-out;
-    }
-    .mobile-nav-link:hover { color: var(--forsythia); }
-
-    .mobile-cta {
-      display: block;
-      text-align: center;
-      padding: 14px;
-      margin-top: 2rem;
-    }
-
-    /* =============================================
-       HERO
-    ============================================= */
-    #hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      padding-top: var(--nav-height);
-    }
-
-    .hero-grid {
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255,200,1,.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,200,1,.04) 1px, transparent 1px);
-      background-size: 60px 60px;
-      mask-image: radial-gradient(ellipse 80% 75% at 50% 50%, black, transparent);
-      -webkit-mask-image: radial-gradient(ellipse 80% 75% at 50% 50%, black, transparent);
-      pointer-events: none;
-    }
-
-    .hero-orb {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(80px);
-      pointer-events: none;
-    }
-    .hero-orb-1 {
-      width: 520px; height: 520px;
-      background: radial-gradient(circle, rgba(255,200,1,.14), transparent 68%);
-      top: -140px; right: -120px;
-      animation: float-orb 9s ease-in-out infinite;
-    }
-    .hero-orb-2 {
-      width: 420px; height: 420px;
-      background: radial-gradient(circle, rgba(255,153,50,.11), transparent 68%);
-      bottom: -100px; left: -80px;
-      animation: float-orb 11s ease-in-out infinite reverse;
-    }
-    .hero-orb-3 {
-      width: 280px; height: 280px;
-      background: radial-gradient(circle, rgba(17,76,90,.45), transparent 68%);
-      top: 45%; left: 28%;
-      animation: float-orb 7s ease-in-out infinite;
-      animation-delay: -3s;
-    }
-    @keyframes float-orb {
-      0%,100% { transform: translate(0,0); }
-      33%      { transform: translate(18px,-14px); }
-      66%      { transform: translate(-12px,10px); }
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      max-width: 900px;
-      padding: 60px 24px;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 15px;
-      background: rgba(255,200,1,.09);
-      border: 1px solid rgba(255,200,1,.22);
-      border-radius: 100px;
-      margin-bottom: 2rem;
-      font-size: .78rem;
-      font-weight: 600;
-      color: var(--forsythia);
-      letter-spacing: .05em;
-      opacity: 0; /* GSAP handles reveal */
-      will-change: opacity, transform;
-    }
-    .badge-dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--forsythia);
-      animation: pulse-dot 2s ease-in-out infinite;
-    }
-
-    h1.hero-title {
-      font-size: clamp(2.6rem, 6.5vw, 4.6rem);
-      font-weight: 700;
-      color: var(--arctic-powder);
-      line-height: 1.08;
-      letter-spacing: -.03em;
-      margin-bottom: 1.4rem;
-      opacity: 0;
-      will-change: opacity, transform;
-    }
-    .hero-title .hi {
-      background: linear-gradient(135deg, var(--forsythia) 20%, var(--deep-saffron) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .highlight-word {
-      position: relative;
-      display: inline-block;
-      white-space: nowrap;
-    }
-    .highlight-word::before {
-      content: '';
-      position: absolute;
-      bottom: 3px;
-      left: -5px;
-      right: -5px;
-      height: 12px;
-      background: var(--forsythia);
-      transform: rotate(-1.5deg);
-      z-index: -1;
-      border-radius: 3px;
-      opacity: .32;
-    }
-
-    .hero-subtitle {
-      font-size: clamp(1rem, 2vw, 1.175rem);
-      color: var(--mystic-mint);
-      max-width: 580px;
-      margin: 0 auto 2.5rem;
-      line-height: 1.75;
-      opacity: 0;
-      will-change: opacity, transform;
-    }
-
-    .hero-ctas {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-bottom: 4rem;
-      opacity: 0;
-      will-change: opacity, transform;
-    }
-
-    .btn-hero-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 15px 30px;
-      background: linear-gradient(135deg, var(--forsythia), var(--deep-saffron));
-      color: var(--oceanic-noir);
-      font-weight: 700;
-      font-size: 1rem;
-      border-radius: var(--radius-md);
-      box-shadow: 0 4px 20px rgba(255,200,1,.32);
-      transition: all 150ms ease-out;
-    }
-    .btn-hero-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(255,200,1,.48); }
-    .btn-hero-primary svg { width: 17px; height: 17px; transition: transform 150ms ease-out; }
-    .btn-hero-primary:hover svg { transform: translateX(3px); }
-
-    .btn-hero-secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 15px 30px;
-      background: rgba(255,255,255,.055);
-      color: var(--arctic-powder);
-      font-weight: 600;
-      font-size: 1rem;
-      border: 1px solid rgba(217,232,226,.18);
-      border-radius: var(--radius-md);
-      backdrop-filter: blur(10px);
-      transition: all 150ms ease-out;
-    }
-    .btn-hero-secondary:hover {
-      background: rgba(255,255,255,.09);
-      border-color: rgba(217,232,226,.38);
-      transform: translateY(-2px);
-    }
-
-    .hero-stats {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-      opacity: 0;
-      will-change: opacity, transform;
-    }
-    .hero-stat {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 0 2.75rem;
-    }
-    .hero-stat + .hero-stat { border-left: 1px solid rgba(217,232,226,.13); }
-
-    .hero-stat-value {
-      font-family: var(--font-heading);
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--forsythia);
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      line-height: 1;
-    }
-    .hero-stat-value svg { width: 19px; height: 19px; }
-    .hero-stat-label { font-size: .8rem; color: var(--mystic-mint); margin-top: 4px; }
-
-    /* =============================================
-       PROBLEM / SOLUTION CONTRAST
-    ============================================= */
-    #contrast {
-      width: 100%;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      min-height: 60vh;
-    }
-    .contrast-panel {
-      padding: 5rem 3rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    .contrast-panel.left {
-      background: var(--oceanic-noir);
-    }
-    .contrast-panel.right {
-      background: var(--nocturnal);
-      border-left: 4px solid var(--forsythia);
-    }
-    .contrast-label {
-      font-family: var(--font-heading);
-      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-      font-weight: 700;
-      margin-bottom: 1.8rem;
-      letter-spacing: -.025em;
-    }
-    .contrast-panel.left .contrast-label { color: var(--arctic-powder); }
-    .contrast-panel.right .contrast-label { color: var(--forsythia); }
-    .contrast-list { display: flex; flex-direction: column; gap: .85rem; }
-    .contrast-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      font-size: .95rem;
-      line-height: 1.6;
-      color: var(--mystic-mint);
-    }
-    .contrast-item .ci-icon {
-      flex-shrink: 0;
-      width: 22px; height: 22px;
-      margin-top: 2px;
-      display: flex; align-items: center; justify-content: center;
-      border-radius: 50%;
-      font-size: .7rem;
-      font-weight: 700;
-    }
-    .contrast-item .ci-icon.fail { background: rgba(255,80,80,.15); color: #ff6060; }
-    .contrast-item .ci-icon.pass { background: rgba(255,200,1,.15); color: var(--forsythia); }
-    .contrast-panel.right .contrast-item { color: var(--arctic-powder); }
-
-    /* =============================================
-       HOW IT WORKS
-    ============================================= */
-    #how-it-works {
-      padding: 7rem 0;
-      position: relative;
-    }
-    #how-it-works::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(217,232,226,.1), transparent);
-    }
-    .hiw-grid {
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 4rem;
-      align-items: start;
-    }
-    .hiw-sticky {
-      position: sticky;
-      top: calc(var(--nav-height) + 2rem);
-    }
-    .hiw-sticky .section-title {
-      font-size: clamp(2.4rem, 5vw, 4.2rem);
-      line-height: 1.05;
-      white-space: pre-line;
-    }
-    .hiw-underline {
-      width: 60px;
-      height: 3px;
-      background: linear-gradient(90deg, var(--forsythia), var(--deep-saffron));
-      margin-top: .75rem;
-      border-radius: 2px;
-    }
-    .hiw-steps { display: flex; flex-direction: column; gap: 2rem; }
-    .hiw-step {
-      display: flex;
-      flex-direction: column;
-      gap: .35rem;
-      padding: 1.5rem 1.8rem;
-      border-radius: var(--radius-lg);
-      border: 1px solid rgba(217,232,226,.07);
-      background: linear-gradient(140deg, rgba(17,76,90,.28), rgba(23,43,54,.52));
-      transition: all 150ms ease-out;
-      position: relative;
-      overflow: hidden;
-    }
-    .hiw-step:hover { border-color: rgba(255,200,1,.15); }
-    .hiw-step-number {
-      font-family: var(--font-heading);
-      font-size: clamp(3rem, 5vw, 5rem);
-      font-weight: 700;
-      line-height: 1;
-      color: var(--forsythia);
-      opacity: .15;
-      position: absolute;
-      top: .5rem; right: 1rem;
-      transition: opacity 150ms ease-out;
-    }
-    .hiw-step:hover .hiw-step-number { opacity: .9; }
-    .hiw-step-title {
-      font-family: var(--font-heading);
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: var(--arctic-powder);
-      position: relative;
-      z-index: 1;
-    }
-    .hiw-step-desc {
-      font-size: .935rem;
-      color: var(--mystic-mint);
-      line-height: 1.7;
-      position: relative;
-      z-index: 1;
-    }
-
-    /* =============================================
-       FINAL CTA
-    ============================================= */
-    #final-cta {
-      background: var(--forsythia);
-      padding: 6rem 0;
-      position: relative;
-      overflow: hidden;
-    }
-    .cta-deco {
-      position: absolute;
-      font-family: var(--font-heading);
-      font-size: clamp(8rem, 15vw, 16rem);
-      font-weight: 700;
-      color: rgba(23,43,54,.06);
-      pointer-events: none;
-      line-height: 1;
-      white-space: nowrap;
-      user-select: none;
-    }
-    .cta-deco-1 { top: -1rem; left: -1rem; }
-    .cta-deco-2 { bottom: -2rem; right: -1rem; }
-    .cta-content {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-    .cta-title {
-      font-family: var(--font-heading);
-      font-size: clamp(2.6rem, 5vw, 4.2rem);
-      font-weight: 700;
-      color: var(--oceanic-noir);
-      line-height: 1.08;
-      letter-spacing: -.03em;
-      margin-bottom: 1rem;
-    }
-    .cta-sub {
-      font-size: 1.1rem;
-      color: rgba(23,43,54,.7);
-      margin-bottom: 2.5rem;
-      line-height: 1.7;
-    }
-    .cta-form {
-      display: flex;
-      gap: .75rem;
-      max-width: 540px;
-      margin: 0 auto;
-    }
-    .cta-input {
-      flex: 1;
-      padding: 14px 18px;
-      border: 1px solid rgba(23,43,54,.12);
-      border-radius: var(--radius-md);
+    .brut-card {
+      border: 2px solid var(--oceanic-noir);
+      box-shadow: 8px 8px 0 0 var(--oceanic-noir);
+      transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
       background: white;
-      font-family: var(--font-body);
-      font-size: .95rem;
-      color: var(--oceanic-noir);
-      outline: none;
-      transition: border-color 150ms ease-out, box-shadow 150ms ease-out;
+      position: relative;
     }
-    .cta-input::placeholder { color: rgba(23,43,54,.4); }
-    .cta-input:focus {
-      border-color: var(--oceanic-noir);
-      box-shadow: 0 0 0 3px rgba(23,43,54,.1);
+    .brut-card:hover {
+      transform: translate(-4px,-4px);
+      box-shadow: 12px 12px 0 0 var(--forsythia);
     }
-    .btn-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 14px 28px;
-      background: var(--oceanic-noir);
-      color: white;
+
+    .font-display {
       font-family: var(--font-heading);
-      font-weight: 600;
-      font-size: .95rem;
-      border-radius: var(--radius-md);
-      border: none;
-      cursor: pointer;
-      transition: all 150ms ease-out;
-      white-space: nowrap;
-    }
-    .btn-cta:hover { transform: scale(1.03); box-shadow: 0 4px 24px rgba(23,43,54,.25); }
-    .btn-cta svg { width: 16px; height: 16px; transition: transform 150ms ease-out; }
-    .btn-cta:hover svg { transform: translateX(3px); }
-
-    /* =============================================
-       FEATURES
-    ============================================= */
-    #features {
-      padding: 7rem 0;
-      position: relative;
-    }
-    #features::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(217,232,226,.1), transparent);
+      font-weight: 800;
+      line-height: .85;
+      letter-spacing: -.04em;
     }
 
-    /* --- BENTO GRID --- */
-    .bento-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-
-    .bento-card {
-      position: relative;
-      background: linear-gradient(140deg, rgba(17,76,90,.38), rgba(23,43,54,.62));
-      border: 1px solid rgba(217,232,226,.07);
-      border-radius: var(--radius-lg);
-      padding: 2rem;
-      cursor: default;
-      transition: transform 150ms ease-out, box-shadow 150ms ease-out, background 150ms ease-out;
-      overflow: hidden;
-      opacity: 0; /* GSAP reveals */
-    }
-    .bento-card:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-lift), 0 0 0 1px rgba(255,200,1,.18);
-      background: linear-gradient(140deg, rgba(17,76,90,.56), rgba(23,43,54,.8));
-    }
-    .bento-card.active {
-      box-shadow: var(--shadow-lift), 0 0 0 1px rgba(255,200,1,.35);
-    }
-
-    /* card layout overrides */
-    .bento-card:nth-child(1) { grid-column: span 2; }
-    .bento-card:nth-child(6) { grid-column: span 3; }
-
-    /* Card 1 — two-column internal layout */
-    .bento-card:nth-child(1) {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: start;
-      gap: 0 2rem;
-    }
-    .bento-card:nth-child(1) .bento-tag  { grid-column: 1; }
-    .bento-card:nth-child(1) .bento-icon { grid-column: 1; }
-    .bento-card:nth-child(1) h3          { grid-column: 1; }
-    .bento-card:nth-child(1) p           { grid-column: 1; }
-    .bento-card:nth-child(1) .bento-visual { grid-column: 2; grid-row: 1 / -1; display: flex; align-items: center; }
-
-    /* Card 6 — flex row */
-    .bento-card:nth-child(6) {
-      display: flex;
-      align-items: center;
-      gap: 2.5rem;
-    }
-    .bento-left  { flex: 0 0 auto; min-width: 240px; display: flex; flex-direction: column; gap: .75rem; }
-    .bento-right { flex: 1; display: flex; flex-wrap: wrap; gap: 10px; justify-content: flex-end; }
-
-    .bento-tag {
-      display: inline-flex;
-      align-items: center;
-      padding: 3px 10px;
-      background: rgba(255,200,1,.1);
-      border: 1px solid rgba(255,200,1,.18);
-      border-radius: 100px;
-      font-size: .68rem;
-      font-weight: 700;
-      letter-spacing: .08em;
+    .font-mono-raw {
+      font-family: var(--font-heading);
       text-transform: uppercase;
-      color: var(--forsythia);
-      width: fit-content;
-      margin-bottom: .75rem;
-    }
-
-    .bento-icon {
-      width: 52px; height: 52px;
-      display: flex; align-items: center; justify-content: center;
-      background: rgba(255,200,1,.09);
-      border-radius: var(--radius-md);
-      margin-bottom: 1rem;
-      color: var(--forsythia);
-      transition: all 150ms ease-out;
-    }
-    .bento-card:hover .bento-icon { background: rgba(255,200,1,.17); transform: scale(1.06); }
-    .bento-icon svg { width: 25px; height: 25px; }
-    .bento-card:nth-child(1) .bento-icon,
-    .bento-card:nth-child(6) .bento-icon { width: 58px; height: 58px; }
-    .bento-card:nth-child(1) .bento-icon svg,
-    .bento-card:nth-child(6) .bento-icon svg { width: 28px; height: 28px; }
-
-    .bento-card h3 {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--arctic-powder);
-      margin-bottom: .5rem;
-    }
-    .bento-card:nth-child(1) h3,
-    .bento-card:nth-child(6) h3 { font-size: 1.3rem; }
-
-    .bento-card p {
-      font-size: .875rem;
-      color: var(--mystic-mint);
-      line-height: 1.65;
-    }
-
-    /* Data-flow animation (card 1 visual) */
-    .data-flow { width: 100%; display: flex; flex-direction: column; gap: 10px; }
-    .data-flow-bar {
-      height: 7px;
-      border-radius: 4px;
-      background: rgba(255,200,1,.12);
-      position: relative;
-      overflow: hidden;
-    }
-    .data-flow-bar::after {
-      content: '';
-      position: absolute;
-      top: 0; left: -100%; height: 100%;
-      background: linear-gradient(90deg, transparent, var(--forsythia), transparent);
-      animation: flow 2.2s linear infinite;
-    }
-    .data-flow-bar:nth-child(1)         { width: 92%; }
-    .data-flow-bar:nth-child(2)         { width: 68%; animation-delay: .45s; }
-    .data-flow-bar:nth-child(3)         { width: 83%; animation-delay: .9s; }
-    .data-flow-bar:nth-child(4)         { width: 57%; animation-delay: 1.35s; }
-    .data-flow-bar:nth-child(2)::after  { animation-delay: .45s; }
-    .data-flow-bar:nth-child(3)::after  { animation-delay: .9s; }
-    .data-flow-bar:nth-child(4)::after  { animation-delay: 1.35s; }
-    @keyframes flow { 0% { left: -100%; } 100% { left: 200%; } }
-
-    /* Integration badges (card 6) */
-    .int-badge {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      padding: 8px 14px;
-      background: rgba(17,76,90,.45);
-      border: 1px solid rgba(217,232,226,.09);
-      border-radius: var(--radius-sm);
-      font-size: .8rem;
-      font-weight: 500;
-      color: var(--arctic-powder);
-      transition: all 150ms ease-out;
-    }
-    .int-badge:hover { border-color: rgba(255,200,1,.3); background: rgba(17,76,90,.7); }
-    .int-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-    .int-badge.more {
-      background: rgba(255,200,1,.07);
-      border-color: rgba(255,200,1,.18);
-      color: var(--forsythia);
-    }
-
-    /* --- ACCORDION --- */
-    .accordion-list { display: none; }
-
-    .accordion-item { border-bottom: 1px solid rgba(217,232,226,.09); }
-
-    .accordion-trigger {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      padding: 1.15rem 0;
-      text-align: left;
-      cursor: pointer;
-    }
-    .acc-icon {
-      width: 44px; height: 44px;
-      flex-shrink: 0;
-      display: flex; align-items: center; justify-content: center;
-      background: rgba(255,200,1,.09);
-      border-radius: var(--radius-sm);
-      color: var(--forsythia);
-      transition: background 150ms ease-out;
-    }
-    .accordion-trigger:hover .acc-icon { background: rgba(255,200,1,.18); }
-    .acc-icon svg { width: 22px; height: 22px; }
-
-    .acc-text { flex: 1; }
-    .acc-tag  { font-size: .68rem; color: var(--forsythia); font-weight: 600; letter-spacing: .05em; }
-    .acc-title {
-      font-family: var(--font-heading);
-      font-size: .98rem;
-      font-weight: 600;
-      color: var(--arctic-powder);
-    }
-
-    .acc-chevron {
-      width: 20px; height: 20px;
-      color: var(--mystic-mint);
-      flex-shrink: 0;
-      transition: transform 300ms ease-in-out;
-    }
-    .accordion-item.open .acc-chevron { transform: rotate(180deg); }
-
-    .accordion-panel {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 300ms ease-in-out;
-    }
-    .accordion-panel-inner {
-      padding: 0 0 1.5rem 60px;
-      font-size: .93rem;
-      color: var(--mystic-mint);
-      line-height: 1.72;
-    }
-
-    /* =============================================
-       PRICING
-    ============================================= */
-    #pricing {
-      padding: 7rem 0;
-      position: relative;
-    }
-    #pricing::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(217,232,226,.1), transparent);
-    }
-    #pricing::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse 60% 50% at 50% 60%, rgba(17,76,90,.12), transparent);
-      pointer-events: none;
-    }
-
-    .pricing-controls {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-bottom: 3rem;
-      flex-wrap: wrap;
-      position: relative;
-      z-index: 1;
-    }
-
-    /* Currency switcher */
-    .currency-switcher {
-      display: flex;
-      background: rgba(17,76,90,.28);
-      border: 1px solid rgba(217,232,226,.09);
-      border-radius: var(--radius-sm);
-      padding: 3px;
-      gap: 2px;
-    }
-    .currency-btn {
-      padding: 7px 16px;
-      border-radius: 6px;
-      font-family: var(--font-heading);
-      font-size: .78rem;
-      font-weight: 600;
-      color: var(--mystic-mint);
-      transition: all 150ms ease-out;
-      cursor: pointer;
-    }
-    .currency-btn.active {
-      background: var(--forsythia);
-      color: var(--oceanic-noir);
-    }
-
-    /* Billing toggle */
-    .billing-toggle {
-      display: flex;
-      align-items: center;
-      gap: .75rem;
-    }
-    .toggle-label {
-      font-size: .875rem;
-      font-weight: 500;
-      color: rgba(217,232,226,.5);
-      transition: color 150ms ease-out;
-    }
-    .toggle-label.active { color: var(--arctic-powder); }
-
-    .toggle-switch {
-      position: relative;
-      width: 48px; height: 26px;
-      background: rgba(17,76,90,.5);
-      border: 1px solid rgba(217,232,226,.18);
-      border-radius: 13px;
-      cursor: pointer;
-      transition: all 150ms ease-out;
-    }
-    .toggle-switch.on {
-      background: rgba(255,200,1,.18);
-      border-color: rgba(255,200,1,.4);
-    }
-    .toggle-knob {
-      position: absolute;
-      top: 3px; left: 3px;
-      width: 18px; height: 18px;
-      background: var(--mystic-mint);
-      border-radius: 50%;
-      transition: transform 150ms ease-out, background 150ms ease-out;
-    }
-    .toggle-switch.on .toggle-knob {
-      transform: translateX(22px);
-      background: var(--forsythia);
-    }
-
-    .annual-badge {
-      display: none;
-      padding: 3px 9px;
-      background: rgba(255,200,1,.1);
-      border: 1px solid rgba(255,200,1,.22);
-      border-radius: 100px;
-      font-size: .68rem;
       font-weight: 700;
-      color: var(--forsythia);
-      letter-spacing: .06em;
-    }
-    .annual-badge.show { display: inline-block; }
-
-    /* Pricing cards */
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      align-items: center;
-      position: relative;
-      z-index: 1;
+      letter-spacing: -.02em;
     }
 
-    .pricing-card {
-      background: linear-gradient(140deg, rgba(17,76,90,.32), rgba(23,43,54,.58));
-      border: 1px solid rgba(217,232,226,.07);
-      border-radius: var(--radius-xl);
-      padding: 2.25rem;
-      position: relative;
-      overflow: hidden;
-      transition: transform 150ms ease-out, box-shadow 150ms ease-out;
+    .sharp-btn {
+      background: var(--forsythia); color: var(--oceanic-noir);
+      padding: 1rem 2rem; border: 2px solid var(--oceanic-noir);
+      box-shadow: 6px 6px 0 var(--oceanic-noir);
+      font-family: var(--font-heading); font-weight: 700;
+      transition: all 0.2s;
     }
-    .pricing-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lift); }
-
-    .pricing-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, rgba(255,200,1,.25), transparent);
-      opacity: 0;
-      transition: opacity 150ms ease-out;
-    }
-    .pricing-card:hover::before { opacity: 1; }
-
-    .pricing-card.featured {
-      border-color: rgba(255,200,1,.38);
-      background: linear-gradient(140deg, rgba(17,76,90,.52), rgba(23,43,54,.78));
-      box-shadow: 0 0 0 1px rgba(255,200,1,.12), var(--glow-gold);
-      transform: scale(1.04);
-    }
-    .pricing-card.featured::before {
-      background: linear-gradient(90deg, var(--forsythia), var(--deep-saffron));
-      opacity: 1;
-    }
-    .pricing-card.featured:hover { transform: scale(1.04) translateY(-4px); }
-
-    .pricing-pop-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      padding: 4px 12px;
-      background: linear-gradient(135deg, var(--forsythia), var(--deep-saffron));
-      color: var(--oceanic-noir);
-      font-size: .7rem;
-      font-weight: 700;
-      letter-spacing: .07em;
-      text-transform: uppercase;
-      border-radius: 100px;
-      margin-bottom: 1.25rem;
+    .sharp-btn:hover {
+      transform: translate(-2px,-2px);
+      box-shadow: 8px 8px 0 var(--oceanic-noir);
+      background: var(--deep-saffron);
     }
 
-    .pricing-tier {
-      font-family: var(--font-heading);
-      font-size: .85rem;
-      font-weight: 600;
-      color: var(--mystic-mint);
-      text-transform: uppercase;
-      letter-spacing: .1em;
-      margin-bottom: .6rem;
+    .nav-link:hover {
+      text-decoration-line: underline;
+      text-decoration-thickness: 4px;
+      text-decoration-color: var(--forsythia);
     }
 
-    .price-row {
-      display: flex;
-      align-items: baseline;
-      gap: 4px;
-      margin-bottom: .2rem;
+    .accordion-content {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.4s ease-out;
     }
-    .price-amount {
-      font-family: var(--font-heading);
-      font-size: 2.85rem;
-      font-weight: 700;
-      color: var(--arctic-powder);
-      line-height: 1;
-    }
-    .price-per {
-      font-size: .88rem;
-      color: var(--mystic-mint);
-    }
-    .price-note {
-      font-size: .78rem;
-      color: var(--mystic-mint);
-      margin-bottom: 1.6rem;
-      min-height: 1.1em;
+    .accordion-item.active .accordion-content {
+      max-height: 500px;
     }
 
-    .price-divider {
-      height: 1px;
-      background: rgba(217,232,226,.07);
-      margin-bottom: 1.4rem;
-    }
-    .pricing-card.featured .price-divider { background: rgba(255,200,1,.12); }
-
-    .feature-list { display: flex; flex-direction: column; gap: .7rem; margin-bottom: 1.85rem; }
-    .feature-item { display: flex; align-items: center; gap: 10px; font-size: .865rem; color: var(--mystic-mint); }
-    .f-check {
-      width: 18px; height: 18px;
-      border-radius: 50%;
-      background: rgba(255,200,1,.1);
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-      color: var(--forsythia);
-      font-size: .62rem;
-      font-weight: 700;
+    .pricing-active {
+      background: var(--forsythia) !important;
+      color: var(--oceanic-noir) !important;
+      box-shadow: 4px 4px 0 var(--oceanic-noir) !important;
     }
 
-    .btn-plan {
-      display: block;
-      width: 100%;
-      padding: 12px;
-      border-radius: var(--radius-md);
-      font-weight: 600;
-      font-size: .93rem;
-      text-align: center;
-      transition: all 150ms ease-out;
-    }
-    .btn-plan-outline {
-      background: transparent;
-      color: var(--arctic-powder);
-      border: 1px solid rgba(217,232,226,.18);
-    }
-    .btn-plan-outline:hover {
-      background: rgba(255,255,255,.05);
-      border-color: rgba(255,200,1,.38);
-      color: var(--forsythia);
-    }
-    .btn-plan-fill {
-      background: linear-gradient(135deg, var(--forsythia), var(--deep-saffron));
-      color: var(--oceanic-noir);
-      border: none;
-    }
-    .btn-plan-fill:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(255,200,1,.38); }
-
-    /* =============================================
-       SOCIAL PROOF
-    ============================================= */
-    #social-proof {
-      padding: 7rem 0;
-      background: var(--arctic-powder);
-      position: relative;
-    }
-    #social-proof .section-label { color: var(--nocturnal); opacity: .7; }
-    #social-proof .section-title { color: var(--nocturnal); }
-    #social-proof .section-desc  { color: rgba(17,76,90,.68); }
-
-    /* Stats bar */
-    .stats-bar {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1px;
-      background: var(--mystic-mint);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      margin-bottom: 4rem;
-    }
-    .stat-cell {
-      background: var(--arctic-powder);
-      padding: 2rem;
-      text-align: center;
-    }
-    .stat-value {
-      font-family: var(--font-heading);
-      font-size: 2.1rem;
-      font-weight: 700;
-      color: var(--nocturnal);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      line-height: 1;
-    }
-    .stat-value svg { width: 20px; height: 20px; color: var(--deep-saffron); }
-    .stat-sub { font-size: .82rem; color: rgba(17,76,90,.58); margin-top: 5px; font-weight: 500; }
-
-    /* Testimonials */
-    .testi-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-    .testi-card {
-      background: white;
-      border: 1px solid var(--mystic-mint);
-      border-radius: var(--radius-lg);
-      padding: 2rem;
-      position: relative;
-      transition: all 150ms ease-out;
-    }
-    .testi-card:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(17,76,90,.1); }
-
-    .testi-stars {
-      position: absolute;
-      top: 1.5rem; right: 1.5rem;
-      display: flex; gap: 2px;
-    }
-    .star { color: var(--forsythia); font-size: .85rem; }
-
-    .testi-quote {
-      font-size: 2.4rem;
-      color: var(--forsythia);
-      font-family: var(--font-heading);
-      line-height: 1;
-      margin-bottom: .65rem;
-    }
-    .testi-text {
-      font-size: .91rem;
-      color: rgba(17,76,90,.82);
-      line-height: 1.72;
-      margin-bottom: 1.5rem;
-    }
-    .testi-author { display: flex; align-items: center; gap: .75rem; }
-    .testi-avatar {
-      width: 44px; height: 44px;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-heading);
-      font-size: .95rem;
-      font-weight: 700;
-      color: white;
-      flex-shrink: 0;
-    }
-    .testi-name  { font-family: var(--font-heading); font-size: .88rem; font-weight: 600; color: var(--nocturnal); }
-    .testi-role  { font-size: .78rem; color: rgba(17,76,90,.55); }
-
-    /* =============================================
-       FOOTER
-    ============================================= */
-    footer {
-      background: var(--oceanic-noir);
-      border-top: 1px solid rgba(217,232,226,.07);
-      padding: 3.5rem 0 2rem;
-    }
-    .footer-inner {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 3rem;
-      flex-wrap: wrap;
-      margin-bottom: 2.5rem;
-    }
-    .footer-brand { max-width: 260px; }
-    .footer-logo {
-      font-family: var(--font-heading);
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--arctic-powder);
-      display: flex; align-items: center; gap: 8px;
-      margin-bottom: .7rem;
-    }
-    .footer-tagline { font-size: .85rem; color: var(--mystic-mint); line-height: 1.65; }
-
-    .footer-col-title {
-      font-family: var(--font-heading);
-      font-size: .73rem;
-      font-weight: 600;
-      color: var(--arctic-powder);
-      text-transform: uppercase;
-      letter-spacing: .1em;
-      margin-bottom: 1rem;
-    }
-    .footer-links { display: flex; flex-direction: column; gap: .55rem; }
-    .footer-link {
-      font-size: .85rem;
-      color: var(--mystic-mint);
-      display: flex; align-items: center; gap: 6px;
-      transition: color 150ms ease-out;
-    }
-    .footer-link svg { width: 13px; height: 13px; opacity: .45; transition: opacity 150ms ease-out; }
-    .footer-link:hover { color: var(--forsythia); }
-    .footer-link:hover svg { opacity: 1; }
-
-    .footer-bottom {
-      padding-top: 1.75rem;
-      border-top: 1px solid rgba(217,232,226,.055);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: .75rem;
-    }
-    .footer-copy { font-size: .78rem; color: rgba(217,232,226,.35); }
-    .footer-legal { display: flex; gap: 1.5rem; }
-    .footer-legal a { font-size: .78rem; color: rgba(217,232,226,.35); transition: color 150ms ease-out; }
-    .footer-legal a:hover { color: var(--mystic-mint); }
-
-    /* =============================================
-       SCROLL TO TOP
-    ============================================= */
     #scroll-top {
-      position: fixed;
-      bottom: 28px; right: 28px;
+      position: fixed; bottom: 28px; right: 28px;
       width: 48px; height: 48px;
-      background: linear-gradient(135deg, var(--forsythia), var(--deep-saffron));
-      border-radius: 50%;
+      background: var(--forsythia); color: var(--oceanic-noir);
+      border: 2px solid var(--oceanic-noir);
+      box-shadow: 4px 4px 0 var(--oceanic-noir);
       display: flex; align-items: center; justify-content: center;
-      color: var(--oceanic-noir);
-      box-shadow: 0 4px 16px rgba(255,200,1,.35);
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(12px);
-      transition: opacity 300ms ease-in-out, transform 300ms ease-in-out, box-shadow 150ms ease-out;
+      opacity: 0; pointer-events: none; transform: translateY(12px);
+      transition: opacity 300ms, transform 300ms;
       z-index: 50;
     }
     #scroll-top.visible { opacity: 1; pointer-events: all; transform: translateY(0); }
-    #scroll-top:hover   { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,200,1,.52); }
-    #scroll-top svg { width: 20px; height: 20px; }
-
-    /* =============================================
-       RESPONSIVE
-    ============================================= */
-    @media (max-width: 1024px) {
-      .pricing-grid {
-        grid-template-columns: 1fr;
-        max-width: 420px;
-        margin: 0 auto;
-      }
-      .pricing-card.featured { transform: none; order: -1; }
-      .pricing-card.featured:hover { transform: translateY(-4px); }
-
-      .bento-grid { grid-template-columns: repeat(2, 1fr); }
-      .bento-card:nth-child(1) {
-        grid-column: span 2;
-        display: flex; flex-direction: column;
-      }
-      .bento-card:nth-child(1) .bento-visual { display: none; }
-      .bento-card:nth-child(6) {
-        grid-column: span 2;
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .bento-right { justify-content: flex-start; }
-
-      .stats-bar  { grid-template-columns: repeat(2, 1fr); }
-      .testi-grid { grid-template-columns: repeat(2, 1fr); }
-    }
+    #scroll-top:hover { transform: translate(-2px,-2px); }
 
     @media (max-width: 768px) {
-      .nav-links, .btn-primary.nav-cta { display: none; }
-      .btn-hamburger { display: flex; }
-
-      /* Feature 2: switch to accordion on mobile */
-      .bento-grid    { display: none !important; }
-      .accordion-list { display: block; }
-
-      .hero-stats { flex-direction: column; gap: 1.4rem; }
-      .hero-stat + .hero-stat {
-        border-left: none;
-        border-top: 1px solid rgba(217,232,226,.13);
-        padding-top: 1.4rem;
-      }
-
-      #contrast { grid-template-columns: 1fr; }
-      .contrast-panel { padding: 3rem 1.5rem; }
-      .contrast-panel.right { border-left: none; border-top: 4px solid var(--forsythia); }
-
-      .hiw-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .hiw-sticky { position: static; }
-
-      .stats-bar { grid-template-columns: repeat(2, 1fr); }
-      .testi-grid { grid-template-columns: 1fr; }
-
-      .cta-form { flex-direction: column; }
-
-      .footer-inner { flex-direction: column; gap: 2rem; }
-      .pricing-controls { flex-direction: column; gap: 1rem; }
+      .desktop-only { display: none !important; }
+      .mobile-only { display: block !important; }
     }
-
-    @media (max-width: 480px) {
-      .hero-ctas { flex-direction: column; align-items: stretch; }
-      .btn-hero-primary, .btn-hero-secondary { justify-content: center; }
-      .stats-bar { grid-template-columns: 1fr; }
+    @media (min-width: 769px) {
+      .mobile-only { display: none !important; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ================== HEADER ================== -->
-  <header id="site-header">
-    <nav aria-label="Main navigation">
-      <a href="#hero" class="nav-logo" aria-label="NeuralFlow — home">
-        <div class="logo-dot" aria-hidden="true"></div>
-        NeuralFlow
+  <div class="noise-bg"></div>
+
+  <!-- Header -->
+  <header class="concrete-bg" style="position:fixed;top:0;left:0;right:0;z-index:100;height:72px;border-bottom:4px solid var(--oceanic-noir);padding:0 28px;display:flex;align-items:center;justify-content:space-between">
+    <div style="display:flex;align-items:center;gap:1rem">
+      <a href="#hero" class="font-mono-raw" style="font-size:1.3rem;background:var(--oceanic-noir);color:white;padding:4px 14px;transform:rotate(-2deg);display:inline-block">
+        AXON
       </a>
+      <button id="nav-search-btn" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;color:var(--oceanic-noir);border-radius:0;border:2px solid transparent;transition:all 150ms" aria-label="Search Axon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" style="width:17px;height:17px" role="img" aria-label="Search icon"><path fill="currentColor" d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"/></svg>
+      </button>
+    </div>
 
-      <ul class="nav-links" role="list">
-        <li><a href="#features"      class="nav-link">Features</a></li>
-        <li><a href="#pricing"       class="nav-link">Pricing</a></li>
-        <li><a href="#social-proof"  class="nav-link">Customers</a></li>
-        <li><a href="#"              class="nav-link">Docs</a></li>
-      </ul>
-
-      <div class="nav-actions">
-        <!-- search.svg -->
-        <button class="interactive" id="nav-search-btn" aria-label="Search NeuralFlow">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" role="img" aria-label="Search icon"><path fill="currentColor" d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"/></svg>
-        </button>
-        <a href="#pricing" class="btn-primary nav-cta interactive">Get Started</a>
-        <!-- hamburger — x-mark.svg used in mobile menu close -->
-        <button class="btn-hamburger interactive" id="mob-open" aria-label="Open menu" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
+    <nav class="desktop-only" style="display:flex;gap:2.5rem;font-family:var(--font-heading);font-size:.8rem;font-weight:600;text-transform:uppercase">
+      <a href="#features" class="nav-link">CAPABILITIES</a>
+      <a href="#workflow" class="nav-link">
+        <span style="display:inline-flex;align-items:center;gap:6px">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" style="width:14px;height:14px" role="img" aria-label="Sync arrows"><path d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"/></svg>
+          ORCHESTRATION
+        </span>
+      </a>
+      <a href="#pricing" class="nav-link">VALUE</a>
     </nav>
+
+    <div style="display:flex;align-items:center;gap:1rem">
+      <button class="btn-hamburger mobile-only" id="mob-open" aria-label="Open menu" aria-expanded="false" style="display:flex;flex-direction:column;gap:5px;padding:8px;color:var(--oceanic-noir)">
+        <span style="display:block;width:22px;height:3px;background:currentColor;border-radius:2px"></span>
+        <span style="display:block;width:22px;height:3px;background:currentColor;border-radius:2px"></span>
+        <span style="display:block;width:22px;height:3px;background:currentColor;border-radius:2px"></span>
+      </button>
+      <a href="/login" class="font-mono-raw" style="font-size:.7rem;letter-spacing:.08em">LOG_IN</a>
+      <button class="sharp-btn" style="font-size:.7rem;padding:8px 20px">GET STARTED</button>
+    </div>
   </header>
 
-  <!-- ================== MOBILE MENU ================== -->
-  <div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile navigation">
-    <!-- x-mark.svg -->
-    <button id="mob-close" aria-label="Close menu">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" role="img" aria-label="Close icon"><path d="M6 18L18 6M6 6l12 12"/></svg>
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" style="position:fixed;inset:0;z-index:98;background:var(--arctic-powder);display:flex;flex-direction:column;padding:100px 32px 40px;transform:translateX(100%);transition:transform 300ms" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+    <button id="mob-close" aria-label="Close menu" style="position:absolute;top:16px;right:20px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:2px solid var(--oceanic-noir);color:var(--oceanic-noir)">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" style="width:20px;height:20px" role="img" aria-label="Close menu"><path d="M6 18L18 6M6 6l12 12"/></svg>
     </button>
-    <nav class="mobile-nav-links" aria-label="Mobile navigation">
-      <a href="#features"     class="mobile-nav-link">Features</a>
-      <a href="#pricing"      class="mobile-nav-link">Pricing</a>
-      <a href="#social-proof" class="mobile-nav-link">Customers</a>
-      <a href="#"             class="mobile-nav-link">Docs</a>
+    <nav style="display:flex;flex-direction:column;gap:4px;margin-bottom:auto">
+      <a href="#features" class="mobile-nav-link" style="font-family:var(--font-heading);font-size:1.5rem;font-weight:700;color:var(--oceanic-noir);padding:.6rem 0;border-bottom:2px solid var(--oceanic-noir)">CAPABILITIES</a>
+      <a href="#workflow" class="mobile-nav-link" style="font-family:var(--font-heading);font-size:1.5rem;font-weight:700;color:var(--oceanic-noir);padding:.6rem 0;border-bottom:2px solid var(--oceanic-noir)">ORCHESTRATION</a>
+      <a href="#pricing" class="mobile-nav-link" style="font-family:var(--font-heading);font-size:1.5rem;font-weight:700;color:var(--oceanic-noir);padding:.6rem 0;border-bottom:2px solid var(--oceanic-noir)">VALUE</a>
     </nav>
-    <a href="#pricing" class="btn-primary mobile-cta">Start Free Trial</a>
+    <button class="sharp-btn" style="width:100%;text-align:center;margin-top:2rem;font-size:.9rem">GET STARTED</button>
   </div>
 
-  <main>
+  <main style="padding-top:72px">
 
-    <!-- ================== HERO ================== -->
-    <section id="hero" aria-labelledby="hero-title">
-      <div class="hero-grid" aria-hidden="true"></div>
-      <div class="hero-orb hero-orb-1" aria-hidden="true"></div>
-      <div class="hero-orb hero-orb-2" aria-hidden="true"></div>
-      <div class="hero-orb hero-orb-3" aria-hidden="true"></div>
-
-      <div class="hero-content">
-        <div class="hero-badge" id="hero-badge">
-          <div class="badge-dot" aria-hidden="true"></div>
-          Now with GPT-4o Integration — Ship faster
+    <!-- Hero -->
+    <section id="hero" class="concrete-bg" style="padding:6rem 24px;overflow:hidden" aria-labelledby="hero-title">
+      <div style="max-width:1280px;margin:0 auto;position:relative">
+        <div style="position:absolute;top:-40px;right:-80px;width:400px;height:400px;background:var(--oceanic-noir);opacity:.04;transform:rotate(12deg);pointer-events:none;display:flex;align-items:center;justify-content:center">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" style="width:120px;height:120px;opacity:.6;color:var(--forsythia)" role="img" aria-label="Chart pie"><path d="M10.5 6a7.5 7.5 0 1 0 7.5 7.5h-7.5V6Z"/><path d="M13.5 10.5H21A7.5 7.5 0 0 0 13.5 3v7.5Z"/></svg>
         </div>
+        <div style="position:absolute;bottom:0;left:-80px;width:300px;height:300px;border:8px solid var(--deep-saffron);opacity:.15;transform:rotate(-6deg);pointer-events:none"></div>
 
-        <h1 class="hero-title" id="hero-title">
-          Automate Every<br>
-          <span class="hi">Data Workflow</span><br>
-          at Machine <span class="highlight-word">Speed</span>
-        </h1>
-
-        <p class="hero-subtitle">
-          NeuralFlow processes, transforms, and delivers insights from your data pipelines — in real-time, at any scale, with zero engineering overhead.
-        </p>
-
-        <div class="hero-ctas" id="hero-ctas">
-          <a href="#pricing" class="btn-hero-primary interactive" id="cta-hero-primary">
-            Start Free Trial
-            <!-- chevron-right.svg -->
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" role="img" aria-label="Arrow right"><path d="m8.25 4.5 7.5 7.5-7.5 7.5"/></svg>
-          </a>
-          <a href="#features" class="btn-hero-secondary interactive">
-            <!-- chevron-left.svg -->
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true"><path d="M15.75 19.5 8.25 12l7.5-7.5"/></svg>
-            Explore Features
-          </a>
-        </div>
-
-        <div class="hero-stats" id="hero-stats" aria-label="Platform highlights">
-          <div class="hero-stat">
-            <div class="hero-stat-value">
-              <!-- arrow-trending-up.svg -->
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" role="img" aria-label="Trending up chart"><path d="M2.25 18 9 11.25l4.306 4.307a11.95 11.95 0 0 1 5.814-5.519l2.74-1.22m0 0-5.94-2.28m5.94 2.28-2.28 5.941"/></svg>
-              50K+
+        <div style="position:relative;z-index:1;display:flex;flex-direction:column;gap:3rem">
+          <div>
+            <span style="display:inline-block;background:var(--forsythia);color:var(--oceanic-noir);padding:4px 16px;font-family:var(--font-heading);font-size:.85rem;font-weight:700;text-transform:uppercase;transform:rotate(1deg);margin-bottom:2rem">
+              [ PIPELINE: ACTIVE ]
+            </span>
+            <h1 id="hero-title" class="font-display" style="font-size:clamp(3.5rem,10vw,8.5rem);color:var(--oceanic-noir);margin-bottom:3rem">
+              YOUR DATA,<br>
+              <span style="color:var(--forsythia);font-style:italic;background:var(--oceanic-noir);padding:0 16px;display:inline-block">FULLY AUTOMATED</span>
+            </h1>
+            <p style="max-width:560px;font-size:1.15rem;font-weight:500;line-height:1.5;margin-bottom:3rem;color:rgba(23,43,54,.75)">
+              Axon is an AI data pipeline built for engineering teams. Connect any source, clean automatically, and ship to your warehouse in real time.
+            </p>
+            <div style="display:flex;flex-wrap:wrap;gap:1.5rem">
+              <button class="sharp-btn" style="font-size:1.1rem;padding:1.2rem 2.5rem" id="hero-cta-btn">
+                <span style="display:flex;align-items:center;gap:10px">
+                  START AUTOMATING
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="width:20px;height:20px" role="img" aria-label="Arrow right"><path d="m8.25 4.5 7.5 7.5-7.5 7.5"/></svg>
+                </span>
+              </button>
+              <button class="font-mono-raw" style="border-bottom:4px solid var(--oceanic-noir);padding:4px 16px;font-size:.8rem;letter-spacing:.05em;transition:all 200ms" id="hero-secondary-btn">
+                <span style="display:flex;align-items:center;gap:8px">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" style="width:16px;height:16px" role="img" aria-label="Arrow left"><path d="M15.75 19.5 8.25 12l7.5-7.5"/></svg>
+                  SEE HOW IT WORKS
+                </span>
+              </button>
             </div>
-            <div class="hero-stat-label">Active companies</div>
-          </div>
-          <div class="hero-stat">
-            <div class="hero-stat-value">99.9%</div>
-            <div class="hero-stat-label">Uptime SLA</div>
-          </div>
-          <div class="hero-stat">
-            <div class="hero-stat-value">&lt;50ms</div>
-            <div class="hero-stat-label">Avg. latency</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ================== FEATURES ================== -->
-    <section id="features" aria-labelledby="features-title">
-      <div class="container">
-        <div class="section-header">
-          <p class="section-label">Platform Capabilities</p>
-          <h2 class="section-title" id="features-title">Everything your data pipeline needs</h2>
-          <p class="section-desc">Six core capabilities engineered for enterprise-grade automation, from raw ingestion to real-time insight delivery.</p>
+    <!-- Broken Grid Bento Features -->
+    <section id="features" style="background:var(--oceanic-noir);padding:7rem 24px;color:white;position:relative" aria-labelledby="features-title">
+      <div style="max-width:1280px;margin:0 auto">
+        <div style="display:flex;align-items:center;gap:2rem;margin-bottom:5rem">
+          <h2 id="features-title" class="font-display" style="font-size:clamp(2.5rem,6vw,5rem);flex-shrink:0">WHAT AXON DOES</h2>
+          <div style="height:4px;flex:1;background:var(--forsythia)"></div>
         </div>
 
-        <!-- ===== BENTO GRID (desktop >768px) ===== -->
-        <div class="bento-grid" id="bento-grid" role="list" aria-label="Feature highlights">
-
-          <!-- Card 0: Real-time Sync — arrow-path.svg -->
-          <article class="bento-card" role="listitem" data-fi="0" tabindex="0" aria-label="Real-time Data Sync feature">
-            <span class="bento-tag">Core Engine</span>
-            <div class="bento-icon" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"/></svg>
-            </div>
-            <h3>Real-time Data Sync</h3>
-            <p>Synchronize data across all your systems instantly. No lag, no conflicts — bi-directional data flow at machine speed.</p>
-            <div class="bento-visual" aria-hidden="true">
-              <div class="data-flow">
-                <div class="data-flow-bar"></div>
-                <div class="data-flow-bar"></div>
-                <div class="data-flow-bar"></div>
-                <div class="data-flow-bar"></div>
+        <!-- Desktop Bento -->
+        <div class="desktop-only" style="display:grid;grid-template-columns:repeat(12,1fr);gap:2rem" id="desktop-bento">
+          <div class="brut-card" style="grid-column:span 8;background:var(--arctic-powder);color:var(--oceanic-noir);padding:3rem;border:2px solid var(--oceanic-noir);transform:rotate(1deg);border-width:3px 2px 4px 3px" data-index="0">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:1.5rem">
+              <div style="width:52px;height:52px;background:var(--forsythia);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" style="width:26px;height:26px" role="img" aria-label="Sync arrows"><path d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"/></svg>
               </div>
+              <span style="font-family:var(--font-heading);font-size:.7rem;font-weight:600;letter-spacing:.08em;color:var(--nocturnal)">INGESTION</span>
             </div>
-          </article>
-
-          <!-- Card 1: Predictive Analytics — arrow-trending-up.svg -->
-          <article class="bento-card" role="listitem" data-fi="1" tabindex="0" aria-label="Predictive Analytics feature">
-            <span class="bento-tag">AI Layer</span>
-            <div class="bento-icon" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="M2.25 18 9 11.25l4.306 4.307a11.95 11.95 0 0 1 5.814-5.519l2.74-1.22m0 0-5.94-2.28m5.94 2.28-2.28 5.941"/></svg>
-            </div>
-            <h3>Predictive Analytics</h3>
-            <p>Surface hidden patterns and forecast trends before they happen. ML models analyze your streams continuously.</p>
-          </article>
-
-          <!-- Card 2: Visual Insights — chart-pie.svg -->
-          <article class="bento-card" role="listitem" data-fi="2" tabindex="0" aria-label="Visual Insights feature">
-            <span class="bento-tag">Visualization</span>
-            <div class="bento-icon" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="M10.5 6a7.5 7.5 0 1 0 7.5 7.5h-7.5V6Z"/><path d="M13.5 10.5H21A7.5 7.5 0 0 0 13.5 3v7.5Z"/></svg>
-            </div>
-            <h3>Visual Insights</h3>
-            <p>Transform complex datasets into stunning dashboards. 40+ chart types, drag-and-drop builder, zero SQL.</p>
-          </article>
-
-          <!-- Card 3: Smart Automation — cog-8-tooth.svg -->
-          <article class="bento-card" role="listitem" data-fi="3" tabindex="0" aria-label="Smart Automation feature">
-            <span class="bento-tag">Automation</span>
-            <div class="bento-icon" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 0 1 1.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 0 1-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 0 1-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.109v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.107-1.204l-.527-.738a1.125 1.125 0 0 1 .12-1.45l.773-.773a1.125 1.125 0 0 1 1.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894Z"/><path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/></svg>
-            </div>
-            <h3>Smart Automation</h3>
-            <p>Intelligent workflows that react to your data. Conditional logic, triggers, actions — no code required.</p>
-          </article>
-
-          <!-- Card 4: Pipeline Architecture — cube-16-solid.svg -->
-          <article class="bento-card" role="listitem" data-fi="4" tabindex="0" aria-label="Pipeline Architecture feature">
-            <span class="bento-tag">Infrastructure</span>
-            <div class="bento-icon" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill="currentColor" d="M8.372 1.349a.75.75 0 0 0-.744 0l-4.81 2.748L8 7.131l5.182-3.034zM14 5.357 8.75 8.43v6.005l4.872-2.784A.75.75 0 0 0 14 11zm-6.75 9.078V8.43L2 5.357V11c0 .27.144.518.378.651z"/></svg>
-            </div>
-            <h3>Pipeline Architecture</h3>
-            <p>Modular, composable pipelines that scale with your business. One-click deploy to any cloud.</p>
-          </article>
-
-          <!-- Card 5: Integrations — link-solid.svg -->
-          <article class="bento-card" role="listitem" data-fi="5" tabindex="0" aria-label="200+ Integrations feature">
-            <div class="bento-left">
-              <span class="bento-tag">Connectivity</span>
-              <div class="bento-icon" aria-hidden="true">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M19.902 4.098a3.75 3.75 0 0 0-5.304 0l-4.5 4.5a3.75 3.75 0 0 0 1.035 6.037.75.75 0 0 1-.646 1.353 5.25 5.25 0 0 1-1.449-8.45l4.5-4.5a5.25 5.25 0 1 1 7.424 7.424l-1.757 1.757a.75.75 0 1 1-1.06-1.06l1.757-1.757a3.75 3.75 0 0 0 0-5.304Zm-7.389 4.267a.75.75 0 0 1 1-.353 5.25 5.25 0 0 1 1.449 8.45l-4.5 4.5a5.25 5.25 0 1 1-7.424-7.424l1.757-1.757a.75.75 0 1 1 1.06 1.06l-1.757 1.757a3.75 3.75 0 1 0 5.304 5.304l4.5-4.5a3.75 3.75 0 0 0-1.035-6.037.75.75 0 0 1-.354-1Z" clip-rule="evenodd"/></svg>
-              </div>
-              <h3>200+ Integrations</h3>
-              <p>Connect every tool in your stack natively — no custom connectors needed.</p>
-            </div>
-            <div class="bento-right" aria-label="Supported integrations">
-              <div class="int-badge"><div class="int-dot" style="background:#4285F4"></div>BigQuery</div>
-              <div class="int-badge"><div class="int-dot" style="background:#29B5E8"></div>Snowflake</div>
-              <div class="int-badge"><div class="int-dot" style="background:#00A1E0"></div>Salesforce</div>
-              <div class="int-badge"><div class="int-dot" style="background:#FF9900"></div>AWS S3</div>
-              <div class="int-badge"><div class="int-dot" style="background:#0052CC"></div>Jira</div>
-              <div class="int-badge"><div class="int-dot" style="background:#36C5F0"></div>Slack</div>
-              <div class="int-badge"><div class="int-dot" style="background:#6C47FF"></div>Segment</div>
-              <div class="int-badge more">+193 more</div>
-            </div>
-          </article>
-
-        </div><!-- /bento-grid -->
-
-        <!-- ===== ACCORDION (mobile ≤768px) ===== -->
-        <div class="accordion-list" id="accordion-list" role="list" aria-label="Feature list">
-
-          <!-- Item 0 — arrow-path.svg -->
-          <div class="accordion-item" role="listitem" data-ai="0">
-            <button class="accordion-trigger interactive" aria-expanded="false" aria-controls="ap-0" id="at-0">
-              <div class="acc-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" role="img" aria-label="Data sync arrows"><path d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"/></svg>
-              </div>
-              <div class="acc-text">
-                <div class="acc-tag">Core Engine</div>
-                <div class="acc-title">Real-time Data Sync</div>
-              </div>
-              <!-- chevron-down.svg -->
-              <svg class="acc-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" aria-hidden="true"><path d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
-            </button>
-            <div class="accordion-panel" id="ap-0" role="region" aria-labelledby="at-0">
-              <div class="accordion-panel-inner">Synchronize data across all your systems instantly. No lag, no conflicts — just seamless, bi-directional data flow at machine speed.</div>
+            <h3 class="font-display" style="font-size:2.5rem;margin-bottom:1.5rem">ACCEPT ANYTHING</h3>
+            <p style="font-size:1.05rem;max-width:480px;margin-bottom:2rem;line-height:1.7">Feed Axon any format — JSON, XML, Parquet, or raw logs. No schema needed. The AI finds the structure on its own.</p>
+            <div style="width:100%;height:6px;background:rgba(23,43,54,.08);overflow:hidden">
+              <div style="height:100%;width:65%;background:var(--forsythia)"></div>
             </div>
           </div>
 
-          <!-- Item 1 — arrow-trending-up.svg -->
-          <div class="accordion-item" role="listitem" data-ai="1">
-            <button class="accordion-trigger interactive" aria-expanded="false" aria-controls="ap-1" id="at-1">
-              <div class="acc-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" role="img" aria-label="Trending analytics graph"><path d="M2.25 18 9 11.25l4.306 4.307a11.95 11.95 0 0 1 5.814-5.519l2.74-1.22m0 0-5.94-2.28m5.94 2.28-2.28 5.941"/></svg>
-              </div>
-              <div class="acc-text">
-                <div class="acc-tag">AI Layer</div>
-                <div class="acc-title">Predictive Analytics</div>
-              </div>
-              <svg class="acc-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" aria-hidden="true"><path d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
-            </button>
-            <div class="accordion-panel" id="ap-1" role="region" aria-labelledby="at-1">
-              <div class="accordion-panel-inner">Surface hidden patterns and forecast trends before they happen. NeuralFlow's ML models analyze your data streams continuously for proactive insights.</div>
+          <div class="brut-card" style="grid-column:span 4;background:var(--nocturnal);color:white;padding:3rem;transform:rotate(-2deg)" data-index="1">
+            <div style="width:52px;height:52px;background:rgba(255,200,1,.15);display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" style="width:26px;height:26px;color:var(--forsythia)" role="img" aria-label="Settings gear"><path d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93c.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 0 1 1.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204c.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78c-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 0 1-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107c-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93c-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 0 1-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204c-.165-.397-.505-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.109v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78c.165-.398.143-.854-.107-1.204l-.527-.738a1.125 1.125 0 0 1 .12-1.45l.773-.773a1.125 1.125 0 0 1 1.45-.12l.737.527c.35.25.807.272 1.204.107c.397-.165.71-.505.78-.929l.15-.894Z"/><path d="M15 12a3 3 0 1 1-6 0a3 3 0 0 1 6 0Z"/></svg>
+            </div>
+            <h3 class="font-mono-raw" style="font-size:1.1rem;margin-bottom:1rem">REAL-TIME PROCESSING</h3>
+            <p style="font-size:.9rem;opacity:.8">Process millions of events per second at just 15ms overhead.</p>
+          </div>
+
+          <div class="brut-card" style="grid-column:span 4;background:white;color:var(--oceanic-noir);padding:3rem;transform:rotate(1deg)" data-index="2">
+            <h3 class="font-mono-raw" style="font-size:1.3rem;margin-bottom:1.5rem">200+ CONNECTORS</h3>
+            <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.5rem">
+              <span style="background:var(--oceanic-noir);color:white;font-family:var(--font-heading);font-size:.6rem;padding:4px 8px;font-weight:600">AWS</span>
+              <span style="background:var(--oceanic-noir);color:white;font-family:var(--font-heading);font-size:.6rem;padding:4px 8px;font-weight:600">SAP</span>
+              <span style="background:var(--oceanic-noir);color:white;font-family:var(--font-heading);font-size:.6rem;padding:4px 8px;font-weight:600">SNOWFLAKE</span>
+              <span style="background:var(--oceanic-noir);color:white;font-family:var(--font-heading);font-size:.6rem;padding:4px 8px;font-weight:600">REDSHIFT</span>
+            </div>
+            <div style="width:52px;height:52px;background:rgba(255,200,1,.12);display:flex;align-items:center;justify-content:center">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="width:26px;height:26px;color:var(--forsythia)" role="img" aria-label="Link chain icon"><path fill="currentColor" fill-rule="evenodd" d="M19.902 4.098a3.75 3.75 0 0 0-5.304 0l-4.5 4.5a3.75 3.75 0 0 0 1.035 6.037.75.75 0 0 1-.646 1.353 5.25 5.25 0 0 1-1.449-8.45l4.5-4.5a5.25 5.25 0 1 1 7.424 7.424l-1.757 1.757a.75.75 0 1 1-1.06-1.06l1.757-1.757a3.75 3.75 0 0 0 0-5.304Zm-7.389 4.267a.75.75 0 0 1 1-.353 5.25 5.25 0 0 1 1.449 8.45l-4.5 4.5a5.25 5.25 0 1 1-7.424-7.424l1.757-1.757a.75.75 0 1 1 1.06 1.06l-1.757 1.757a3.75 3.75 0 1 0 5.304 5.304l4.5-4.5a3.75 3.75 0 0 0-1.035-6.037.75.75 0 0 1-.354-1Z" clip-rule="evenodd"/></svg>
             </div>
           </div>
 
-          <!-- Item 2 — chart-pie.svg -->
-          <div class="accordion-item" role="listitem" data-ai="2">
-            <button class="accordion-trigger interactive" aria-expanded="false" aria-controls="ap-2" id="at-2">
-              <div class="acc-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" role="img" aria-label="Pie chart visualization"><path d="M10.5 6a7.5 7.5 0 1 0 7.5 7.5h-7.5V6Z"/><path d="M13.5 10.5H21A7.5 7.5 0 0 0 13.5 3v7.5Z"/></svg>
+          <div class="brut-card" style="grid-column:span 8;background:var(--deep-saffron);color:var(--oceanic-noir);padding:3rem;transform:rotate(-1deg);border:2px solid var(--oceanic-noir)" data-index="3">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:1.5rem">
+              <div style="width:52px;height:52px;background:var(--oceanic-noir);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" style="width:24px;height:24px;color:var(--forsythia)" role="img" aria-label="Cube icon"><path fill="currentColor" d="M8.372 1.349a.75.75 0 0 0-.744 0l-4.81 2.748L8 7.131l5.182-3.034zM14 5.357 8.75 8.43v6.005l4.872-2.784A.75.75 0 0 0 14 11zm-6.75 9.078V8.43L2 5.357V11c0 .27.144.518.378.651z"/></svg>
               </div>
-              <div class="acc-text">
-                <div class="acc-tag">Visualization</div>
-                <div class="acc-title">Visual Insights</div>
-              </div>
-              <svg class="acc-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" aria-hidden="true"><path d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
-            </button>
-            <div class="accordion-panel" id="ap-2" role="region" aria-labelledby="at-2">
-              <div class="accordion-panel-inner">Transform complex datasets into stunning dashboards. Drag-and-drop chart builder with 40+ visualization types — zero SQL required.</div>
+              <span style="font-family:var(--font-heading);font-size:.7rem;font-weight:600;letter-spacing:.08em">CLEANING</span>
             </div>
+            <h3 class="font-display" style="font-size:2.5rem;margin-bottom:1rem">SMART DATA CLEANING</h3>
+            <p style="font-size:1.05rem;max-width:480px;line-height:1.7">Axon understands what your data means — not just its format. Bad rows are detected and removed without any manual rules.</p>
           </div>
+        </div>
 
-          <!-- Item 3 — cog-8-tooth.svg -->
-          <div class="accordion-item" role="listitem" data-ai="3">
-            <button class="accordion-trigger interactive" aria-expanded="false" aria-controls="ap-3" id="at-3">
-              <div class="acc-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" role="img" aria-label="Settings gear for automation"><path d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 0 1 1.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 0 1-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 0 1-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.109v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.107-1.204l-.527-.738a1.125 1.125 0 0 1 .12-1.45l.773-.773a1.125 1.125 0 0 1 1.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894Z"/><path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/></svg>
-              </div>
-              <div class="acc-text">
-                <div class="acc-tag">Automation</div>
-                <div class="acc-title">Smart Automation</div>
-              </div>
-              <svg class="acc-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" aria-hidden="true"><path d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
-            </button>
-            <div class="accordion-panel" id="ap-3" role="region" aria-labelledby="at-3">
-              <div class="accordion-panel-inner">Build intelligent workflows that react to your data. Conditional logic, triggers, and actions — all without writing a single line of code.</div>
-            </div>
-          </div>
-
-          <!-- Item 4 — cube-16-solid.svg -->
-          <div class="accordion-item" role="listitem" data-ai="4">
-            <button class="accordion-trigger interactive" aria-expanded="false" aria-controls="ap-4" id="at-4">
-              <div class="acc-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" role="img" aria-label="3D cube for pipeline architecture"><path fill="currentColor" d="M8.372 1.349a.75.75 0 0 0-.744 0l-4.81 2.748L8 7.131l5.182-3.034zM14 5.357 8.75 8.43v6.005l4.872-2.784A.75.75 0 0 0 14 11zm-6.75 9.078V8.43L2 5.357V11c0 .27.144.518.378.651z"/></svg>
-              </div>
-              <div class="acc-text">
-                <div class="acc-tag">Infrastructure</div>
-                <div class="acc-title">Pipeline Architecture</div>
-              </div>
-              <svg class="acc-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" aria-hidden="true"><path d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
-            </button>
-            <div class="accordion-panel" id="ap-4" role="region" aria-labelledby="at-4">
-              <div class="accordion-panel-inner">Modular, composable data pipelines that scale with your business. Deploy to AWS, GCP, Azure, or on-prem with one click.</div>
-            </div>
-          </div>
-
-          <!-- Item 5 — link-solid.svg -->
-          <div class="accordion-item" role="listitem" data-ai="5">
-            <button class="accordion-trigger interactive" aria-expanded="false" aria-controls="ap-5" id="at-5">
-              <div class="acc-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-label="Link chain icon for integrations"><path fill="currentColor" fill-rule="evenodd" d="M19.902 4.098a3.75 3.75 0 0 0-5.304 0l-4.5 4.5a3.75 3.75 0 0 0 1.035 6.037.75.75 0 0 1-.646 1.353 5.25 5.25 0 0 1-1.449-8.45l4.5-4.5a5.25 5.25 0 1 1 7.424 7.424l-1.757 1.757a.75.75 0 1 1-1.06-1.06l1.757-1.757a3.75 3.75 0 0 0 0-5.304Zm-7.389 4.267a.75.75 0 0 1 1-.353 5.25 5.25 0 0 1 1.449 8.45l-4.5 4.5a5.25 5.25 0 1 1-7.424-7.424l1.757-1.757a.75.75 0 1 1 1.06 1.06l-1.757 1.757a3.75 3.75 0 1 0 5.304 5.304l4.5-4.5a3.75 3.75 0 0 0-1.035-6.037.75.75 0 0 1-.354-1Z" clip-rule="evenodd"/></svg>
-              </div>
-              <div class="acc-text">
-                <div class="acc-tag">Connectivity</div>
-                <div class="acc-title">200+ Integrations</div>
-              </div>
-              <svg class="acc-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" aria-hidden="true"><path d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
-            </button>
-            <div class="accordion-panel" id="ap-5" role="region" aria-labelledby="at-5">
-              <div class="accordion-panel-inner">Connect to every tool in your stack. BigQuery, Snowflake, Salesforce, AWS, Slack, and 195 more — all native integrations, no custom connectors needed.</div>
-            </div>
-          </div>
-
-        </div><!-- /accordion -->
+        <!-- Mobile Accordion -->
+        <div class="mobile-only" style="display:flex;flex-direction:column;gap:1.5rem" id="mobile-accordion"></div>
       </div>
     </section>
 
-    <!-- ================== PROBLEM / SOLUTION ================== -->
-    <section id="contrast" aria-label="Old way versus NeuralFlow way">
-      <div class="contrast-panel left">
-        <h2 class="contrast-label">The Old Way</h2>
-        <ul class="contrast-list" role="list">
-          <li class="contrast-item"><span class="ci-icon fail" aria-hidden="true">✗</span>Manual ETL processing with brittle cron jobs</li>
-          <li class="contrast-item"><span class="ci-icon fail" aria-hidden="true">✗</span>Siloed data sources that never talk to each other</li>
-          <li class="contrast-item"><span class="ci-icon fail" aria-hidden="true">✗</span>Hours of engineering time on pipeline maintenance</li>
-          <li class="contrast-item"><span class="ci-icon fail" aria-hidden="true">✗</span>Batch updates — your data is always yesterday's news</li>
-          <li class="contrast-item"><span class="ci-icon fail" aria-hidden="true">✗</span>Custom code for every connector and transformation</li>
-        </ul>
-      </div>
-      <div class="contrast-panel right">
-        <h2 class="contrast-label">The NeuralFlow Way</h2>
-        <ul class="contrast-list" role="list">
-          <li class="contrast-item"><span class="ci-icon pass" aria-hidden="true">✓</span>Real-time ingestion &amp; transformation — zero config</li>
-          <li class="contrast-item"><span class="ci-icon pass" aria-hidden="true">✓</span>Unified data graph connecting every source</li>
-          <li class="contrast-item"><span class="ci-icon pass" aria-hidden="true">✓</span>Automated pipeline management — set &amp; forget</li>
-          <li class="contrast-item"><span class="ci-icon pass" aria-hidden="true">✓</span>Streaming architecture with sub-50ms latency</li>
-          <li class="contrast-item"><span class="ci-icon pass" aria-hidden="true">✓</span>200+ native integrations, no coding required</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- ================== HOW IT WORKS ================== -->
-    <section id="how-it-works" aria-labelledby="hiw-title">
-      <div class="container">
-        <div class="hiw-grid">
-          <div class="hiw-sticky">
-            <h2 class="section-title" id="hiw-title">How It<br>Works</h2>
-            <div class="hiw-underline" aria-hidden="true"></div>
-          </div>
-          <div class="hiw-steps">
-            <article class="hiw-step">
-              <span class="hiw-step-number" aria-hidden="true">01</span>
-              <h3 class="hiw-step-title">Connect your data sources</h3>
-              <p class="hiw-step-desc">Plug into any API, database, or file system. Choose from 200+ pre-built connectors or build a custom one in minutes.</p>
-            </article>
-            <article class="hiw-step">
-              <span class="hiw-step-number" aria-hidden="true">02</span>
-              <h3 class="hiw-step-title">Transform with AI-powered logic</h3>
-              <p class="hiw-step-desc">NeuralFlow's inference engine cleans, joins, enriches, and reshapes your data — no SQL or Python required. Point, click, and ship.</p>
-            </article>
-            <article class="hiw-step">
-              <span class="hiw-step-number" aria-hidden="true">03</span>
-              <h3 class="hiw-step-title">Deliver insights at machine speed</h3>
-              <p class="hiw-step-desc">Route processed data to dashboards, warehouses, or downstream apps in real-time. Latency measured in milliseconds, not minutes.</p>
-            </article>
+    <!-- Workflow -->
+    <section id="workflow" style="padding:7rem 24px;background:white;border-top:4px solid var(--oceanic-noir);border-bottom:4px solid var(--oceanic-noir)" aria-labelledby="workflow-title">
+      <div style="max-width:1280px;margin:0 auto">
+        <div style="display:flex;flex-direction:column;gap:3rem">
+          <h2 id="workflow-title" class="font-display" style="font-size:clamp(2.5rem,6vw,4.5rem)">HOW IT WORKS</h2>
+          <div style="display:flex;flex-direction:column;gap:4rem">
+            <div style="position:relative;padding-left:3rem;border-left:4px solid var(--forsythia)">
+              <span style="position:absolute;left:-1.5rem;top:-.5rem;font-family:var(--font-heading);font-size:5rem;font-weight:800;color:var(--forsythia);opacity:.25;line-height:1;pointer-events:none">01</span>
+              <h3 class="font-mono-raw" style="font-size:1.5rem;margin-bottom:.75rem">CONNECT YOUR SOURCES</h3>
+              <p style="font-size:1rem;max-width:560px;line-height:1.7;opacity:.7">Plug in any database, API, or file stream. Axon handles legacy SQL, modern cloud warehouses, and unstructured JSON streams — no pre-mapping required.</p>
+            </div>
+            <div style="position:relative;padding-left:3rem;border-left:4px solid var(--deep-saffron)">
+              <span style="position:absolute;left:-1.5rem;top:-.5rem;font-family:var(--font-heading);font-size:5rem;font-weight:800;color:var(--deep-saffron);opacity:.25;line-height:1;pointer-events:none">02</span>
+              <h3 class="font-mono-raw" style="font-size:1.5rem;margin-bottom:.75rem">AI MAPS YOUR DATA</h3>
+              <p style="font-size:1rem;max-width:560px;line-height:1.7;opacity:.7">Axon reads the content of your data, clusters related fields, and selects the optimal normalization path automatically.</p>
+            </div>
+            <div style="position:relative;padding-left:3rem;border-left:4px solid var(--forsythia)">
+              <span style="position:absolute;left:-1.5rem;top:-.5rem;font-family:var(--font-heading);font-size:5rem;font-weight:800;color:var(--forsythia);opacity:.25;line-height:1;pointer-events:none">03</span>
+              <h3 class="font-mono-raw" style="font-size:1.5rem;margin-bottom:.75rem">CLEAN DATA, DELIVERED</h3>
+              <p style="font-size:1rem;max-width:560px;line-height:1.7;opacity:.7">Validated data arrives at your destination in milliseconds. Your dashboards stay current. Your models stay sharp.</p>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ================== PRICING ================== -->
-    <section id="pricing" aria-labelledby="pricing-title">
-      <div class="container">
-        <div class="section-header" style="text-align:center;">
-          <p class="section-label">Pricing</p>
-          <h2 class="section-title" id="pricing-title">Transparent, scalable pricing</h2>
-          <p class="section-desc" style="margin:0.75rem auto 0;">Start free, scale as you grow. No hidden fees, no vendor lock-in.</p>
-        </div>
+    <!-- Pricing -->
+    <section id="pricing" class="concrete-bg" style="padding:7rem 24px" aria-labelledby="pricing-title">
+      <div style="max-width:1024px;margin:0 auto">
+        <div style="text-align:center;margin-bottom:5rem">
+          <h2 id="pricing-title" class="font-display" style="font-size:clamp(2.5rem,6vw,4.5rem);margin-bottom:2rem">PRICING</h2>
 
-        <div class="pricing-controls">
-          <!-- Currency switcher -->
-          <div class="currency-switcher" role="group" aria-label="Select currency">
-            <button class="currency-btn active interactive" data-currency="USD" id="btn-usd" aria-pressed="true">USD</button>
-            <button class="currency-btn interactive"        data-currency="EUR" id="btn-eur" aria-pressed="false">EUR</button>
-            <button class="currency-btn interactive"        data-currency="INR" id="btn-inr" aria-pressed="false">INR</button>
-          </div>
-
-          <!-- Billing toggle -->
-          <div class="billing-toggle" role="group" aria-label="Billing cycle">
-            <span class="toggle-label active" id="lbl-monthly">Monthly</span>
-            <div class="toggle-switch interactive" id="billing-switch" role="switch" aria-checked="false" tabindex="0" aria-label="Toggle annual billing">
-              <div class="toggle-knob"></div>
+          <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem">
+            <div class="currency-switcher" style="display:flex;border:4px solid var(--oceanic-noir);font-family:var(--font-heading);font-size:.7rem;font-weight:600;background:white" role="group" aria-label="Select currency">
+              <button data-currency="USD" class="currency-btn pricing-active" style="padding:10px 24px;border-right:4px solid var(--oceanic-noir);transition:all 150ms;cursor:pointer">USD</button>
+              <button data-currency="EUR" class="currency-btn" style="padding:10px 24px;border-right:4px solid var(--oceanic-noir);transition:all 150ms;cursor:pointer">EUR</button>
+              <button data-currency="INR" class="currency-btn" style="padding:10px 24px;transition:all 150ms;cursor:pointer">INR</button>
             </div>
-            <span class="toggle-label" id="lbl-annual">Annual</span>
-            <span class="annual-badge" id="annual-badge" aria-live="polite">SAVE 20%</span>
+
+            <div class="billing-toggle" style="display:flex;align-items:center;gap:.75rem;font-family:var(--font-heading);font-size:.7rem;font-weight:600" role="group" aria-label="Billing cycle">
+              <span class="toggle-label active">MONTHLY</span>
+              <div class="toggle-switch" id="billing-switch" role="switch" aria-checked="false" tabindex="0" aria-label="Toggle annual billing" style="width:64px;height:32px;border:4px solid var(--oceanic-noir);background:white;position:relative;cursor:pointer">
+                <div id="switch-dot" style="width:16px;height:16px;background:var(--oceanic-noir);position:absolute;top:4px;left:4px;transition:transform 200ms"></div>
+              </div>
+              <span class="toggle-label">ANNUAL <span style="color:var(--deep-saffron)">(-20%)</span></span>
+              <span class="annual-badge" style="display:none;padding:2px 8px;background:var(--forsythia);color:var(--oceanic-noir);font-size:.6rem">SAVE 20%</span>
+            </div>
           </div>
         </div>
 
-        <div class="pricing-grid">
-
+        <div class="pricing-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:3rem;align-items:stretch">
           <!-- Starter -->
-          <article class="pricing-card" aria-label="Starter plan">
-            <div class="pricing-tier">Starter</div>
-            <div class="price-row">
-              <span class="price-amount" data-price="starter">$29</span>
-              <span class="price-per">/mo</span>
+          <article class="brut-card" style="padding:2.5rem;display:flex;flex-direction:column;justify-content:space-between" aria-label="Starter plan">
+            <div>
+              <span class="font-mono-raw" style="font-size:.7rem;color:var(--deep-saffron);margin-bottom:1rem;display:block">LEVEL_01</span>
+              <h3 class="font-display" style="font-size:2rem;margin-bottom:1.5rem">STARTER</h3>
+              <div style="font-family:var(--font-heading);font-size:2.5rem;font-weight:800;margin-bottom:2rem">
+                <span class="price-symbol" id="curr-0">$</span><span data-price="starter">49</span>
+              </div>
+              <ul class="feature-list" style="display:flex;flex-direction:column;gap:.75rem;margin-bottom:2rem;font-family:var(--font-heading);font-size:.7rem;opacity:.7">
+                <li style="display:flex;align-items:center;gap:8px"><span style="width:16px;height:16px;background:var(--forsythia);display:flex;align-items:center;justify-content:center;font-size:.5rem;font-weight:700;flex-shrink:0">✓</span>5 PIPELINES</li>
+                <li style="display:flex;align-items:center;gap:8px"><span style="width:16px;height:16px;background:var(--forsythia);display:flex;align-items:center;justify-content:center;font-size:.5rem;font-weight:700;flex-shrink:0">✓</span>10GB / MONTH</li>
+                <li style="display:flex;align-items:center;gap:8px"><span style="width:16px;height:16px;background:var(--forsythia);display:flex;align-items:center;justify-content:center;font-size:.5rem;font-weight:700;flex-shrink:0">✓</span>BASIC AI MAPPING</li>
+              </ul>
             </div>
-            <p class="price-note" id="note-starter">Billed monthly</p>
-            <div class="price-divider"></div>
-            <ul class="feature-list" aria-label="Starter plan features">
-              <li class="feature-item"><div class="f-check" aria-hidden="true">✓</div>5 data sources</li>
-              <li class="feature-item"><div class="f-check" aria-hidden="true">✓</div>1M rows / month</li>
-              <li class="feature-item"><div class="f-check" aria-hidden="true">✓</div>10 automations</li>
-              <li class="feature-item"><div class="f-check" aria-hidden="true">✓</div>5 GB storage</li>
-              <li class="feature-item"><div class="f-check" aria-hidden="true">✓</div>Email support</li>
-            </ul>
-            <a href="#" class="btn-plan btn-plan-outline interactive" id="cta-starter">Get Started</a>
+            <button class="sharp-btn" style="width:100%;background:white;color:var(--oceanic-noir)">GET STARTED</button>
           </article>
 
           <!-- Pro (featured) -->
-          <article class="pricing-card featured" aria-label="Pro plan — most popular">
-            <div class="pricing-pop-badge">⚡ Most Popular</div>
-            <div class="pricing-tier">Pro</div>
-            <div class="price-row">
-              <span class="price-amount" data-price="pro">$79</span>
-              <span class="price-per">/mo</span>
+          <article class="brut-card" style="padding:2.5rem;display:flex;flex-direction:column;justify-content:space-between;transform:scale(1.05);border-color:var(--forsythia);background:var(--oceanic-noir);color:white;box-shadow:12px 12px 0 var(--forsythia);z-index:1" aria-label="Pro plan — most popular">
+            <div>
+              <span class="font-mono-raw" style="font-size:.7rem;color:var(--forsythia);margin-bottom:1rem;display:block">LEVEL_02 (RECOMMENDED)</span>
+              <h3 class="font-display" style="font-size:2rem;margin-bottom:1.5rem;color:var(--forsythia)">PRO</h3>
+              <div style="font-family:var(--font-heading);font-size:2.5rem;font-weight:800;margin-bottom:2rem">
+                <span class="price-symbol" id="curr-1">$</span><span data-price="pro">149</span>
+              </div>
+              <ul class="feature-list" style="display:flex;flex-direction:column;gap:.75rem;margin-bottom:2rem;font-family:var(--font-heading);font-size:.7rem">
+                <li style="display:flex;align-items:center;gap:8px"><span style="width:16px;height:16px;background:var(--forsythia);color:var(--oceanic-noir);display:flex;align-items:center;justify-content:center;font-size:.5rem;font-weight:700;flex-shrink:0">✓</span>UNLIMITED PIPELINES</li>
+                <li style="display:flex;align-items:center;gap:8px"><span style="width:16px;height:16px;background:var(--forsythia);color:var(--oceanic-noir);display:flex;align-items:center;justify-content:center;font-size:.5rem;font-weight:700;flex-shrink:0">✓</span>200GB / MONTH</li>
+                <li style="display:flex;align-items:center;gap:8px"><span style="width:16px;height:16px;background:var(--forsythia);color:var(--oceanic-noir);display:flex;align-items:center;justify-content:center;font-size:.5rem;font-weight:700;flex-shrink:0">✓</span>SMART DATA CLEANING</li>
+                <li style="display:flex;align-items:center;gap:8px"><span style="width:16px;height:16px;background:var(--forsythia);color:var(--oceanic-noir);display:flex;align-items:center;justify-content:center;font-size:.5rem;font-weight:700;flex-shrink:0">✓</span>PRIORITY SUPPORT</li>
+              </ul>
             </div>
-            <p class="price-note" id="note-pro">Billed monthly</p>
-            <div class="price-divider"></div>
-            <ul class="feature-list" aria-label="Pro plan features">
-              <li class="feature-item"><div class="f-check" aria-hidden="true">✓</div>Unlimited sources</li>
-              <li class="feature-item"><div class="f-check" aria-hidden="true">✓</div>50M rows / month</li>
-              <li class="feature-item"><div class="f-check" aria-hidden="true">✓</div>Unlimited automations</li>
-              <li class="feature-item"><div class="f-check" aria-hidden="true">✓</div>100 GB storage</li>
-              <li class="feature-item"><div class="f-check" aria-hidden="true">✓</div>Priority support</li>
-              <li class="feature-item"><div class="f-check" aria-hidden="true">✓</div>Advanced analytics</li>
-            </ul>
-            <a href="#" class="btn-plan btn-plan-fill interactive" id="cta-pro">Start Free Trial</a>
+            <button class="sharp-btn" style="width:100%;background:var(--forsythia);color:var(--oceanic-noir)">GET STARTED</button>
           </article>
 
           <!-- Enterprise -->
-          <article class="pricing-card" aria-label="Enterprise plan">
-            <div class="pricing-tier">Enterprise</div>
-            <div class="price-row">
-              <span class="price-amount" data-price="enterprise">$199</span>
-              <span class="price-per">/mo</span>
+          <article class="brut-card" style="padding:2.5rem;display:flex;flex-direction:column;justify-content:space-between" aria-label="Enterprise plan">
+            <div>
+              <span class="font-mono-raw" style="font-size:.7rem;color:var(--deep-saffron);margin-bottom:1rem;display:block">LEVEL_03</span>
+              <h3 class="font-display" style="font-size:2rem;margin-bottom:1.5rem">ENTERPRISE</h3>
+              <div style="font-family:var(--font-heading);font-size:2.5rem;font-weight:800;margin-bottom:2rem">
+                <span class="price-symbol" id="curr-2">$</span><span data-price="enterprise">499</span>
+              </div>
+              <ul class="feature-list" style="display:flex;flex-direction:column;gap:.75rem;margin-bottom:2rem;font-family:var(--font-heading);font-size:.7rem;opacity:.7">
+                <li style="display:flex;align-items:center;gap:8px"><span style="width:16px;height:16px;background:var(--forsythia);display:flex;align-items:center;justify-content:center;font-size:.5rem;font-weight:700;flex-shrink:0">✓</span>CUSTOM PIPELINE TOPOLOGY</li>
+                <li style="display:flex;align-items:center;gap:8px"><span style="width:16px;height:16px;background:var(--forsythia);display:flex;align-items:center;justify-content:center;font-size:.5rem;font-weight:700;flex-shrink:0">✓</span>UNLIMITED THROUGHPUT</li>
+                <li style="display:flex;align-items:center;gap:8px"><span style="width:16px;height:16px;background:var(--forsythia);display:flex;align-items:center;justify-content:center;font-size:.5rem;font-weight:700;flex-shrink:0">✓</span>DEDICATED INSTANCE</li>
+                <li style="display:flex;align-items:center;gap:8px"><span style="width:16px;height:16px;background:var(--forsythia);display:flex;align-items:center;justify-content:center;font-size:.5rem;font-weight:700;flex-shrink:0">✓</span>SLA GUARANTEE</li>
+              </ul>
             </div>
-            <p class="price-note" id="note-enterprise">Billed monthly</p>
-            <div class="price-divider"></div>
-            <ul class="feature-list" aria-label="Enterprise plan features">
-              <li class="feature-item"><div class="f-check" aria-hidden="true">✓</div>Everything in Pro</li>
-              <li class="feature-item"><div class="f-check" aria-hidden="true">✓</div>Unlimited rows</li>
-              <li class="feature-item"><div class="f-check" aria-hidden="true">✓</div>Custom SLA (99.99%)</li>
-              <li class="feature-item"><div class="f-check" aria-hidden="true">✓</div>Dedicated infrastructure</li>
-              <li class="feature-item"><div class="f-check" aria-hidden="true">✓</div>SSO / SAML 2.0</li>
-              <li class="feature-item"><div class="f-check" aria-hidden="true">✓</div>24/7 dedicated CSM</li>
-            </ul>
-            <a href="#" class="btn-plan btn-plan-outline interactive" id="cta-enterprise">Contact Sales</a>
+            <button class="sharp-btn" style="width:100%;background:white;color:var(--oceanic-noir)">CONTACT US</button>
           </article>
-
         </div>
       </div>
     </section>
 
-    <!-- ================== SOCIAL PROOF ================== -->
-    <section id="social-proof" aria-labelledby="social-proof-title">
-      <div class="container">
-        <div class="section-header">
-          <p class="section-label">Social Proof</p>
-          <h2 class="section-title" id="social-proof-title">Trusted by teams that move fast</h2>
-          <p class="section-desc">From seed-stage startups to Fortune 500s — NeuralFlow powers the data backbone for thousands of companies worldwide.</p>
-        </div>
-
-        <!-- Stats bar — arrow-trending-up.svg used inside -->
-        <div class="stats-bar" role="list" aria-label="Platform statistics">
-          <div class="stat-cell" role="listitem">
-            <div class="stat-value">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" role="img" aria-label="Trending up icon"><path d="M2.25 18 9 11.25l4.306 4.307a11.95 11.95 0 0 1 5.814-5.519l2.74-1.22m0 0-5.94-2.28m5.94 2.28-2.28 5.941"/></svg>
-              50K+
+    <!-- Social Proof -->
+    <section id="social-proof" style="padding:5rem 24px;background:var(--oceanic-noir);color:white" aria-labelledby="social-title">
+      <div style="max-width:1024px;margin:0 auto;text-align:center">
+        <h2 id="social-title" class="font-display" style="font-size:clamp(2rem,5vw,3.5rem);margin-bottom:3rem">BY THE NUMBERS</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:rgba(255,255,255,.1);margin-bottom:4rem">
+          <div style="padding:2.5rem;background:var(--nocturnal)">
+            <div class="font-display" style="font-size:2.5rem;color:var(--forsythia);display:flex;align-items:center;justify-content:center;gap:6px">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" style="width:22px;height:22px;color:var(--deep-saffron)" role="img" aria-label="Trending up"><path d="M2.25 18 9 11.25l4.306 4.307a11.95 11.95 0 0 1 5.814-5.519l2.74-1.22m0 0-5.94-2.28m5.94 2.28-2.28 5.941"/></svg>
+              2.4B
             </div>
-            <div class="stat-sub">Companies worldwide</div>
+            <div style="font-family:var(--font-heading);font-size:.7rem;margin-top:6px;opacity:.6">EVENTS PROCESSED</div>
           </div>
-          <div class="stat-cell" role="listitem">
-            <div class="stat-value">12B+</div>
-            <div class="stat-sub">Rows processed daily</div>
+          <div style="padding:2.5rem;background:var(--nocturnal)">
+            <div class="font-display" style="font-size:2.5rem;color:var(--forsythia)">99.9%</div>
+            <div style="font-family:var(--font-heading);font-size:.7rem;margin-top:6px;opacity:.6">UPTIME SLA</div>
           </div>
-          <div class="stat-cell" role="listitem">
-            <div class="stat-value">99.9%</div>
-            <div class="stat-sub">Guaranteed uptime</div>
+          <div style="padding:2.5rem;background:var(--nocturnal)">
+            <div class="font-display" style="font-size:2.5rem;color:var(--forsythia)">500+</div>
+            <div style="font-family:var(--font-heading);font-size:.7rem;margin-top:6px;opacity:.6">TEAMS USING AXON</div>
           </div>
-          <div class="stat-cell" role="listitem">
-            <div class="stat-value">4.9★</div>
-            <div class="stat-sub">G2 average rating</div>
+          <div style="padding:2.5rem;background:var(--nocturnal)">
+            <div class="font-display" style="font-size:2.5rem;color:var(--forsythia)">15ms</div>
+            <div style="font-family:var(--font-heading);font-size:.7rem;margin-top:6px;opacity:.6">AVERAGE LATENCY</div>
           </div>
         </div>
 
-        <!-- Testimonials -->
-        <div class="testi-grid">
-
-          <article class="testi-card" aria-label="Testimonial by Sarah Chen, Head of Data at Finova">
-            <div class="testi-stars" aria-label="5 out of 5 stars">
-              <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span>
-              <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span>
-              <span class="star" aria-hidden="true">★</span>
-            </div>
-            <div class="testi-quote" aria-hidden="true">"</div>
-            <p class="testi-text">NeuralFlow replaced three separate data tools and cut our pipeline build time by 80%. The real-time sync is genuinely magic — it just works, every time.</p>
-            <div class="testi-author">
-              <div class="testi-avatar" style="background:linear-gradient(135deg,#114C5A,#172B36)" aria-hidden="true">SC</div>
-              <div>
-                <div class="testi-name">Sarah Chen</div>
-                <div class="testi-role">Head of Data · Finova</div>
-              </div>
-            </div>
-          </article>
-
-          <article class="testi-card" aria-label="Testimonial by Marcus Webb, CTO at Scalepath Labs">
-            <div class="testi-stars" aria-label="5 out of 5 stars">
-              <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span>
-              <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span>
-              <span class="star" aria-hidden="true">★</span>
-            </div>
-            <div class="testi-quote" aria-hidden="true">"</div>
-            <p class="testi-text">We went from midnight batch ETL jobs to real-time insights by 10 AM — on day one. NeuralFlow's automation engine is a force multiplier for any data team.</p>
-            <div class="testi-author">
-              <div class="testi-avatar" style="background:linear-gradient(135deg,#FF9932,#FFC801)" aria-hidden="true">MW</div>
-              <div>
-                <div class="testi-name">Marcus Webb</div>
-                <div class="testi-role">CTO · Scalepath Labs</div>
-              </div>
-            </div>
-          </article>
-
-          <article class="testi-card" aria-label="Testimonial by Priya Sharma, VP Engineering at CloudNest">
-            <div class="testi-stars" aria-label="5 out of 5 stars">
-              <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span>
-              <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span>
-              <span class="star" aria-hidden="true">★</span>
-            </div>
-            <div class="testi-quote" aria-hidden="true">"</div>
-            <p class="testi-text">The 200+ native integrations sold us immediately. Snowflake, Salesforce, and BigQuery connected in under an hour. Setup that used to take weeks was done before lunch.</p>
-            <div class="testi-author">
-              <div class="testi-avatar" style="background:linear-gradient(135deg,#1a6b7a,#114C5A)" aria-hidden="true">PS</div>
-              <div>
-                <div class="testi-name">Priya Sharma</div>
-                <div class="testi-role">VP Engineering · CloudNest</div>
-              </div>
-            </div>
-          </article>
-
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;text-align:left">
+          <div class="brut-card" style="padding:2rem;background:white;color:var(--oceanic-noir);box-shadow:6px 6px 0 var(--forsythia)">
+            <div style="display:flex;gap:2px;color:var(--forsythia);margin-bottom:1rem;font-size:.85rem">★★★★★</div>
+            <p style="font-size:.9rem;line-height:1.7;margin-bottom:1.5rem;opacity:.8">"Axon fixed our dirty data problem in 48 hours. We don't spend Fridays cleaning logs anymore."</p>
+            <span class="font-mono-raw" style="font-size:.7rem;color:var(--nocturnal)">— MARCUS CHEN, CTO · LOOPIFY</span>
+          </div>
+          <div class="brut-card" style="padding:2rem;background:var(--forsythia);color:var(--oceanic-noir);box-shadow:6px 6px 0 var(--oceanic-noir)">
+            <div style="display:flex;gap:2px;color:var(--oceanic-noir);margin-bottom:1rem;font-size:.85rem">★★★★★</div>
+            <p style="font-size:.9rem;line-height:1.7;margin-bottom:1.5rem;opacity:.85">"The auto-mapping is genuinely impressive. It caught field relationships our team had missed for two years."</p>
+            <span class="font-mono-raw" style="font-size:.7rem;color:var(--oceanic-noir)">— SARAH JENKINS, HEAD OF DATA · NURA</span>
+          </div>
+          <div class="brut-card" style="padding:2rem;background:white;color:var(--oceanic-noir);box-shadow:6px 6px 0 var(--deep-saffron)">
+            <div style="display:flex;gap:2px;color:var(--forsythia);margin-bottom:1rem;font-size:.85rem">★★★★★</div>
+            <p style="font-size:.9rem;line-height:1.7;margin-bottom:1.5rem;opacity:.8">"We connected AWS and Snowflake in under 10 minutes. Zero configuration headaches."</p>
+            <span class="font-mono-raw" style="font-size:.7rem;color:var(--nocturnal)">— DAVE ROBERTSON, SENIOR ENGINEER · STACKMESH</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ================== FINAL CTA ================== -->
-    <section id="final-cta" aria-labelledby="cta-title">
-      <div class="cta-deco cta-deco-1" aria-hidden="true">NEURALFLOW</div>
-      <div class="cta-deco cta-deco-2" aria-hidden="true">AI DATA</div>
-      <div class="container">
-        <div class="cta-content">
-          <h2 class="cta-title" id="cta-title">Ready to ship<br>at machine speed?</h2>
-          <p class="cta-sub">Join 50,000+ companies already using NeuralFlow. Start free, no credit card required.</p>
-          <form class="cta-form" action="#" method="post" onsubmit="event.preventDefault();alert('Thanks! We\'ll be in touch.');">
-            <input class="cta-input" type="email" placeholder="Enter your work email" required aria-label="Email address">
-            <button class="btn-cta" type="submit">
-              Get Started
-              <!-- chevron-right.svg -->
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true"><path d="m8.25 4.5 7.5 7.5-7.5 7.5"/></svg>
-            </button>
-          </form>
-        </div>
+    <!-- Final CTA -->
+    <section id="final-cta" style="background:var(--forsythia);padding:7rem 24px;text-align:center;overflow:hidden;position:relative" aria-labelledby="cta-title">
+      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:.08;pointer-events:none;user-select:none">
+        <span class="font-display" style="font-size:30vw;transform:rotate(12deg);color:var(--oceanic-noir);line-height:1">AUTOMATE</span>
+      </div>
+      <div style="max-width:1024px;margin:0 auto;position:relative;z-index:1">
+        <h2 id="cta-title" class="font-display" style="font-size:clamp(3rem,8vw,8rem);color:var(--oceanic-noir);margin-bottom:3rem;line-height:.85">READY TO AUTOMATE?</h2>
+        <p class="font-mono-raw" style="font-size:1rem;margin-bottom:4rem;letter-spacing:.08em;color:var(--oceanic-noir)">[ AVERAGE SETUP TIME: 3 MINUTES ]</p>
+        <button class="sharp-btn" style="font-size:1.5rem;padding:1.5rem 3.5rem;background:var(--oceanic-noir);color:white" id="final-cta-btn">
+          <span style="display:flex;align-items:center;gap:12px">
+            CONNECT YOUR FIRST PIPELINE
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="width:22px;height:22px" role="img" aria-label="Arrow right"><path d="m8.25 4.5 7.5 7.5-7.5 7.5"/></svg>
+          </span>
+        </button>
       </div>
     </section>
 
   </main>
 
-  <!-- ================== FOOTER ================== -->
-  <footer>
-    <div class="container">
-      <div class="footer-inner">
-
-        <div class="footer-brand">
-          <div class="footer-logo">
-            <div class="logo-dot" aria-hidden="true"></div>
-            NeuralFlow
-          </div>
-          <p class="footer-tagline">The AI-powered data automation platform that helps engineering teams move at machine speed — without the overhead.</p>
+  <!-- Footer -->
+  <footer style="background:var(--oceanic-noir);color:white;padding:5rem 24px;border-top:8px solid var(--forsythia)">
+    <div style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:3rem">
+      <div style="grid-column:span 2">
+        <span class="font-mono-raw" style="font-size:2rem;display:block;margin-bottom:2rem;font-style:italic">AXON_</span>
+        <p class="font-mono-raw" style="font-size:.75rem;opacity:.5;max-width:280px;line-height:1.8">
+          BUILT FOR TEAMS THAT SHIP FAST. CONNECT ANY SOURCE. TRUST EVERY ROW.
+        </p>
+        <div style="margin-top:1.5rem">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" style="width:14px;height:14px;opacity:.4;display:inline-block;vertical-align:middle;margin-right:4px" role="img" aria-label="Arrow up"><path d="m4.5 15.75 7.5-7.5 7.5 7.5"/></svg>
+          <span class="font-mono-raw" style="font-size:.6rem;opacity:.4;vertical-align:middle">BACK TO TOP</span>
         </div>
-
-        <div>
-          <p class="footer-col-title">Product</p>
-          <ul class="footer-links" role="list">
-            <li>
-              <!-- link.svg (outline) as decorative link icon -->
-              <a href="#features" class="footer-link">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" aria-hidden="true"><path d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244"/></svg>
-                Features
-              </a>
-            </li>
-            <li><a href="#pricing"      class="footer-link">Pricing</a></li>
-            <li><a href="#"             class="footer-link">Changelog</a></li>
-            <li><a href="#"             class="footer-link">Roadmap</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <p class="footer-col-title">Company</p>
-          <ul class="footer-links" role="list">
-            <li><a href="#" class="footer-link">About</a></li>
-            <li><a href="#" class="footer-link">Blog</a></li>
-            <li><a href="#" class="footer-link">Careers</a></li>
-            <li><a href="#" class="footer-link">Contact</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <p class="footer-col-title">Developers</p>
-          <ul class="footer-links" role="list">
-            <li><a href="#" class="footer-link">API Docs</a></li>
-            <li><a href="#" class="footer-link">SDK Reference</a></li>
-            <li><a href="#" class="footer-link">Status</a></li>
-            <li><a href="#" class="footer-link">GitHub</a></li>
-          </ul>
-        </div>
-
       </div>
-
-      <div class="footer-bottom">
-        <p class="footer-copy">© 2025 NeuralFlow, Inc. All rights reserved.</p>
-        <div class="footer-legal">
-          <a href="#hero" style="display:inline-flex;align-items:center;gap:4px;">
-            <!-- chevron-up.svg -->
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" style="width:13px;height:13px;" aria-hidden="true"><path d="m4.5 15.75 7.5-7.5 7.5 7.5"/></svg>
-            Top
-          </a>
-          <a href="#">Privacy</a>
-          <a href="#">Terms</a>
-          <a href="#">Cookies</a>
+      <div>
+        <h4 class="font-mono-raw" style="font-size:.9rem;margin-bottom:2rem;color:var(--forsythia)">MANIFEST</h4>
+        <ul style="display:flex;flex-direction:column;gap:1rem;font-family:var(--font-heading);font-size:.65rem;opacity:.6;text-transform:uppercase">
+          <li>
+            <a href="#features" style="display:flex;align-items:center;gap:6px;transition:color 150ms">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" style="width:12px;height:12px;opacity:.6" role="img" aria-label="Link external"><path d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244"/></svg>
+              CAPABILITIES
+            </a>
+          </li>
+          <li><a href="#" style="display:flex;align-items:center;gap:6px;transition:color 150ms">INFRASTRUCTURE</a></li>
+          <li><a href="#" style="display:flex;align-items:center;gap:6px;transition:color 150ms">DOCS</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-mono-raw" style="font-size:.9rem;margin-bottom:2rem;color:var(--deep-saffron)">NODES</h4>
+        <div style="display:flex;gap:1rem;font-size:1.5rem">
+          <a href="#" aria-label="Twitter"><iconify-icon icon="mdi:twitter"></iconify-icon></a>
+          <a href="#" aria-label="GitHub"><iconify-icon icon="mdi:github"></iconify-icon></a>
+          <a href="#" aria-label="LinkedIn"><iconify-icon icon="mdi:linkedin"></iconify-icon></a>
         </div>
       </div>
     </div>
+    <div style="max-width:1280px;margin:0 auto;margin-top:4rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;font-family:var(--font-heading);font-size:.6rem;opacity:.3">
+      <span>© 2026 AXON TECHNOLOGIES LTD.</span>
+      <span style="display:flex;gap:2rem">
+        <a href="#">PRIVACY</a>
+        <a href="#">TERMS</a>
+      </span>
+    </div>
   </footer>
 
-  <!-- Scroll to top — chevron-up-solid.svg -->
-  <button id="scroll-top" class="interactive" aria-label="Scroll back to top" title="Back to top">
-    <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M11.47 7.72a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 1 1-1.06 1.06L12 9.31l-6.97 6.97a.75.75 0 0 1-1.06-1.06l7.5-7.5Z" clip-rule="evenodd"/></svg>
+  <!-- Scroll to top -->
+  <button id="scroll-top" aria-label="Scroll back to top">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width:20px;height:20px" aria-hidden="true"><path fill-rule="evenodd" d="M11.47 7.72a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 1 1-1.06 1.06L12 9.31l-6.97 6.97a.75.75 0 0 1-1.06-1.06l7.5-7.5Z" clip-rule="evenodd"/></svg>
   </button>
-
-  <!-- GSAP (hero + scroll animations; Feature 2 sections use vanilla only) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" crossorigin="anonymous"></script>
 
   <script>
     'use strict';
 
     /* ============================================================
        FEATURE 1 — CURRENCY / BILLING SWITCHER
-       State isolation: ONLY text nodes updated, zero re-render
+       State isolation via textContent — no re-render
     ============================================================ */
     const PRICING_MATRIX = {
       tiers: ['starter', 'pro', 'enterprise'],
       base_monthly_usd: {
-        starter:    29,
-        pro:        79,
-        enterprise: 199
+        starter: 49,
+        pro: 149,
+        enterprise: 499
       },
       currency_tariffs: {
-        USD: { symbol: '$',  multiplier: 1     },
-        INR: { symbol: '₹', multiplier: 83.5  },
-        EUR: { symbol: '€',  multiplier: 0.92  }
+        USD: { symbol: '$', multiplier: 1 },
+        INR: { symbol: '₹', multiplier: 83.5 },
+        EUR: { symbol: '€', multiplier: 0.92 }
       },
       annual_discount: 0.20
-    }
+    };
 
     function computePrice(tier, currency, cycle) {
-      const base    = PRICING_MATRIX.base_monthly_usd[tier]
-      const tariff  = PRICING_MATRIX.currency_tariffs[currency]
-      const discount = cycle === 'annual' ? (1 - PRICING_MATRIX.annual_discount) : 1
+      const base = PRICING_MATRIX.base_monthly_usd[tier];
+      const tariff = PRICING_MATRIX.currency_tariffs[currency];
+      const discount = cycle === 'annual' ? (1 - PRICING_MATRIX.annual_discount) : 1;
       return {
         symbol: tariff.symbol,
         amount: Math.round(base * tariff.multiplier * discount)
-      }
+      };
     }
 
-    /* Mutable state — not reactive, no re-render */
-    let currentCurrency = 'USD'
-    let currentCycle    = 'monthly'
+    let currentCurrency = 'USD';
+    let currentCycle = 'monthly';
 
-    /* ONLY update text nodes — never triggers layout reflow */
     function updatePrices(currency, cycle) {
       PRICING_MATRIX.tiers.forEach(tier => {
-        const { symbol, amount } = computePrice(tier, currency, cycle)
-        const el = document.querySelector(`[data-price="${tier}"]`)
-        if (el) el.textContent = `${symbol}${amount}`
-      })
-      /* Update note text — also only textContent, no DOM mutation */
-      const noteText = cycle === 'annual' ? 'Billed annually (save 20%)' : 'Billed monthly'
-      ;['starter', 'pro', 'enterprise'].forEach(t => {
-        const n = document.getElementById(`note-${t}`)
-        if (n) n.textContent = noteText
-      })
+        const { symbol, amount } = computePrice(tier, currency, cycle);
+        const el = document.querySelector(`[data-price="${tier}"]`);
+        if (el) el.textContent = amount;
+      });
+      document.querySelectorAll('.price-symbol').forEach(el => {
+        el.textContent = PRICING_MATRIX.currency_tariffs[currency].symbol;
+      });
     }
 
-    /* Currency buttons */
     document.querySelectorAll('.currency-btn').forEach(btn => {
       btn.addEventListener('click', () => {
-        currentCurrency = btn.dataset.currency
+        currentCurrency = btn.dataset.currency;
         document.querySelectorAll('.currency-btn').forEach(b => {
-          b.classList.toggle('active', b === btn)
-          b.setAttribute('aria-pressed', b === btn ? 'true' : 'false')
-        })
-        updatePrices(currentCurrency, currentCycle)
-      })
-    })
-
-    /* Billing toggle */
-    const billingSwitch = document.getElementById('billing-switch')
-    const lblMonthly    = document.getElementById('lbl-monthly')
-    const lblAnnual     = document.getElementById('lbl-annual')
-    const annualBadge   = document.getElementById('annual-badge')
-
-    function applyBillingState() {
-      const isAnnual = currentCycle === 'annual'
-      billingSwitch.classList.toggle('on', isAnnual)
-      billingSwitch.setAttribute('aria-checked', String(isAnnual))
-      lblMonthly.classList.toggle('active', !isAnnual)
-      lblAnnual.classList.toggle('active',   isAnnual)
-      annualBadge.classList.toggle('show',   isAnnual)
-      updatePrices(currentCurrency, currentCycle)
-    }
+          b.classList.toggle('pricing-active', b === btn);
+        });
+        updatePrices(currentCurrency, currentCycle);
+      });
+    });
 
     function toggleBilling() {
-      currentCycle = currentCycle === 'monthly' ? 'annual' : 'monthly'
-      applyBillingState()
+      currentCycle = currentCycle === 'monthly' ? 'annual' : 'monthly';
+      const isAnnual = currentCycle === 'annual';
+      document.getElementById('switch-dot').style.transform = isAnnual ? 'translateX(32px)' : 'translateX(0)';
+      document.querySelectorAll('.toggle-label').forEach((l, i) => {
+        l.classList.toggle('active', (i === 0 && !isAnnual) || (i === 1 && isAnnual));
+      });
+      updatePrices(currentCurrency, currentCycle);
     }
 
-    billingSwitch.addEventListener('click', toggleBilling)
-    billingSwitch.addEventListener('keydown', e => {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleBilling() }
-    })
+    document.getElementById('billing-switch').addEventListener('click', toggleBilling);
+    document.getElementById('billing-switch').addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleBilling(); }
+    });
 
     /* ============================================================
        FEATURE 2 — BENTO → ACCORDION + CONTEXT TRANSFER
-       Written from scratch. Zero external UI libraries.
+       Zero external UI libraries.
     ============================================================ */
-    let activeIndex = 0  // mutable ref, NOT state
+    const features = [
+      { title: "ACCEPT ANYTHING",       desc: "Ingest JSON, XML, Parquet, raw logs, or legacy SQL — no schema required." },
+      { title: "REAL-TIME PROCESSING",  desc: "15ms overhead processing millions of events per second, continuously." },
+      { title: "200+ CONNECTORS",       desc: "AWS, Snowflake, SAP, Redshift, and 196 more integrations out of the box." },
+      { title: "SMART DATA CLEANING",   desc: "AI-powered cleaning that understands meaning, not just structure." }
+    ];
 
-    const bentoCards     = document.querySelectorAll('.bento-card')
-    const accordionItems = document.querySelectorAll('.accordion-item')
+    let activeIndex = 0;
 
-    /* Bento hover tracking — stores last hovered index */
-    bentoCards.forEach((card, i) => {
-      card.addEventListener('mouseenter', () => {
-        activeIndex = i
-        bentoCards.forEach((c, j) => c.classList.toggle('active', j === i))
-      })
-      card.addEventListener('mouseleave', () => {
-        bentoCards.forEach(c => c.classList.remove('active'))
-      })
-      card.addEventListener('focus', () => { activeIndex = i })
-    })
-
-    /* Accordion open/close */
-    function openAccordionAt(index) {
-      accordionItems.forEach((item, i) => {
-        const panel   = item.querySelector('.accordion-panel')
-        const trigger = item.querySelector('.accordion-trigger')
-        const isOpen  = i === index
-
-        /* max-height animation — layout reflow: 300ms ease-in-out */
-        panel.style.maxHeight = isOpen ? panel.scrollHeight + 'px' : '0'
-        item.classList.toggle('open', isOpen)
-        if (trigger) trigger.setAttribute('aria-expanded', String(isOpen))
-      })
+    function renderAccordion() {
+      const list = document.getElementById('mobile-accordion');
+      if (!list) return;
+      list.innerHTML = features.map((f, i) => `
+        <div class="accordion-item" style="border:2px solid var(--oceanic-noir);box-shadow:6px 6px 0 var(--oceanic-noir);background:white;color:var(--oceanic-noir);overflow:hidden;${activeIndex === i ? '' : ''}">
+          <button class="accordion-trigger" onclick="toggleAcc(${i})" style="width:100%;padding:1.5rem;text-align:left;display:flex;justify-content:space-between;align-items:center;background:none;border:none;cursor:pointer;font-family:var(--font-heading);font-weight:700">
+            <span style="font-size:1.2rem">${f.title}</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" style="width:18px;height:18px;transition:transform 300ms;transform:${activeIndex === i ? 'rotate(180deg)' : 'rotate(0)'}" role="img" aria-label="Chevron down"><path d="m19.5 8.25-7.5 7.5-7.5-7.5"/></svg>
+          </button>
+          <div class="accordion-content" style="max-height:${activeIndex === i ? '500px' : '0'};overflow:hidden;transition:max-height 0.4s ease-out">
+            <div style="padding:0 1.5rem 1.5rem;font-family:var(--font-heading);font-size:.8rem;opacity:.7">${f.desc}</div>
+          </div>
+        </div>
+      `).join('');
     }
 
-    /* Accordion click handlers */
-    accordionItems.forEach((item, i) => {
-      item.querySelector('.accordion-trigger').addEventListener('click', () => {
-        const wasOpen = item.classList.contains('open')
-        openAccordionAt(wasOpen ? -1 : i)
-        if (!wasOpen) activeIndex = i
-      })
-    })
+    function toggleAcc(i) {
+      activeIndex = i;
+      renderAccordion();
+    }
 
-    /* ResizeObserver — context transfer on breakpoint cross */
-    const ro = new ResizeObserver(([entry]) => {
-      if (entry.contentRect.width <= 768) {
-        openAccordionAt(activeIndex)
-      }
-    })
-    ro.observe(document.documentElement)
+    /* Context transfer — ResizeObserver */
+    const rObs = new ResizeObserver(([entry]) => {
+      if (entry.contentRect.width <= 768) renderAccordion();
+    });
+    rObs.observe(document.documentElement);
+
+    /* Bento hover tracking */
+    document.querySelectorAll('.brut-card[data-index]').forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        activeIndex = parseInt(card.dataset.index);
+      });
+    });
 
     /* ============================================================
        NAVIGATION
     ============================================================ */
-    const siteHeader = document.getElementById('site-header')
-    const mobileMenu = document.getElementById('mobile-menu')
-
-    window.addEventListener('scroll', () => {
-      siteHeader.classList.toggle('scrolled', window.scrollY > 20)
-      document.getElementById('scroll-top').classList.toggle('visible', window.scrollY > 500)
-    }, { passive: true })
-
+    const mobileMenu = document.getElementById('mobile-menu');
     document.getElementById('mob-open').addEventListener('click', () => {
-      mobileMenu.classList.add('open')
-      document.getElementById('mob-open').setAttribute('aria-expanded', 'true')
-      document.body.style.overflow = 'hidden'
-    })
+      mobileMenu.style.transform = 'translateX(0)';
+      document.body.style.overflow = 'hidden';
+      document.getElementById('mob-open').setAttribute('aria-expanded', 'true');
+    });
 
     function closeMobileMenu() {
-      mobileMenu.classList.remove('open')
-      document.getElementById('mob-open').setAttribute('aria-expanded', 'false')
-      document.body.style.overflow = ''
+      mobileMenu.style.transform = 'translateX(100%)';
+      document.body.style.overflow = '';
+      document.getElementById('mob-open').setAttribute('aria-expanded', 'false');
     }
-
-    document.getElementById('mob-close').addEventListener('click', closeMobileMenu)
-    mobileMenu.querySelectorAll('.mobile-nav-link, .mobile-cta').forEach(el => {
-      el.addEventListener('click', closeMobileMenu)
-    })
+    document.getElementById('mob-close').addEventListener('click', closeMobileMenu);
+    mobileMenu.querySelectorAll('.mobile-nav-link, .sharp-btn').forEach(el => {
+      el.addEventListener('click', closeMobileMenu);
+    });
     document.addEventListener('keydown', e => {
-      if (e.key === 'Escape' && mobileMenu.classList.contains('open')) closeMobileMenu()
-    })
+      if (e.key === 'Escape' && mobileMenu.style.transform === 'translateX(0)') closeMobileMenu();
+    });
 
-    /* Scroll to top — chevron-up.svg button */
     document.getElementById('scroll-top').addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-    })
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
 
-    /* Smooth scroll for all internal anchor links */
+    window.addEventListener('scroll', () => {
+      document.getElementById('scroll-top').classList.toggle('visible', window.scrollY > 500);
+    }, { passive: true });
+
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', e => {
-        const target = document.querySelector(a.getAttribute('href'))
-        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }) }
-      })
-    })
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      });
+    });
 
     /* ============================================================
-       GSAP — HERO ENTRY + SCROLL-TRIGGERED REVEALS
-       (GSAP allowed per spec; hero + non-Feature-2 sections only)
+       GSAP — HERO + SCROLL ANIMATIONS
     ============================================================ */
-    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-      gsap.registerPlugin(ScrollTrigger)
+    if (typeof gsap !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger);
 
-      /* Hero entrance sequence — total orchestration <500ms */
-      gsap.timeline({ defaults: { ease: 'power3.out' } })
-        .fromTo('#hero-badge',    { opacity: 0, y: 16  }, { opacity: 1, y: 0, duration: 0.4 }, 0)
-        .fromTo('.hero-title',    { opacity: 0, y: 24  }, { opacity: 1, y: 0, duration: 0.4 }, 0.08)
-        .fromTo('.hero-subtitle', { opacity: 0, y: 16  }, { opacity: 1, y: 0, duration: 0.35 }, 0.14)
-        .fromTo('#hero-ctas',     { opacity: 0, y: 12  }, { opacity: 1, y: 0, duration: 0.3 }, 0.18)
-        .fromTo('#hero-stats',    { opacity: 0, y: 10  }, { opacity: 1, y: 0, duration: 0.3 }, 0.22)
+      gsap.from('.font-display', {
+        duration: 1.2, y: 100, opacity: 0, skewY: 7, stagger: 0.2, ease: 'power4.out'
+      });
 
-      /* Features section header */
-      gsap.from('#features .section-header', {
-        scrollTrigger: { trigger: '#features', start: 'top 82%' },
-        opacity: 0, y: 22, duration: 0.6, ease: 'power2.out'
-      })
+      gsap.from('.sharp-btn', {
+        duration: 0.8, scale: 0.8, opacity: 0, delay: 0.5, ease: 'back.out(1.7)'
+      });
 
-      /* Bento cards staggered reveal */
-      gsap.utils.toArray('.bento-card').forEach((card, i) => {
-        gsap.fromTo(card,
-          { opacity: 0, y: 22 },
-          {
-            scrollTrigger: { trigger: '#bento-grid', start: 'top 80%' },
-            opacity: 1, y: 0, duration: 0.55, delay: i * 0.07, ease: 'power2.out'
-          }
-        )
-      })
+      gsap.utils.toArray('.brut-card').forEach(card => {
+        gsap.from(card, {
+          scrollTrigger: { trigger: card, start: 'top 90%', toggleActions: 'play none none none' },
+          y: 50, opacity: 0, rotate: (Math.random() - 0.5) * 6, duration: 0.8, ease: 'power2.out'
+        });
+      });
 
-      /* Pricing cards */
-      gsap.utils.toArray('.pricing-card').forEach((card, i) => {
-        gsap.fromTo(card,
-          { opacity: 0, y: 28 },
-          {
-            scrollTrigger: { trigger: '.pricing-grid', start: 'top 82%' },
-            opacity: 1, y: 0, duration: 0.6, delay: i * 0.1, ease: 'power2.out'
-          }
-        )
-      })
+      gsap.utils.toArray('.pricing-grid article').forEach((card, i) => {
+        gsap.from(card, {
+          scrollTrigger: { trigger: card, start: 'top 85%' },
+          y: 40, opacity: 0, duration: 0.6, delay: i * 0.1, ease: 'power2.out'
+        });
+      });
 
-      /* Stats bar */
-      gsap.from('.stats-bar', {
-        scrollTrigger: { trigger: '.stats-bar', start: 'top 85%' },
-        opacity: 0, y: 20, duration: 0.6, ease: 'power2.out'
-      })
-
-      /* Contrast panels */
-      gsap.from('#contrast .contrast-panel', {
-        scrollTrigger: { trigger: '#contrast', start: 'top 80%' },
-        opacity: 0, x: i => i ? 30 : -30, duration: 0.6, ease: 'power2.out'
-      })
-
-      /* How It Works step cards */
-      gsap.utils.toArray('.hiw-step').forEach((step, i) => {
-        gsap.fromTo(step,
-          { opacity: 0, y: 22 },
-          {
-            scrollTrigger: { trigger: '.hiw-grid', start: 'top 80%' },
-            opacity: 1, y: 0, duration: 0.55, delay: i * 0.1, ease: 'power2.out'
-          }
-        )
-      })
-
-      /* How It Works sticky title */
-      gsap.from('.hiw-sticky', {
-        scrollTrigger: { trigger: '.hiw-grid', start: 'top 82%' },
-        opacity: 0, x: -22, duration: 0.6, ease: 'power2.out'
-      })
-
-      /* Final CTA */
-      gsap.from('.cta-content', {
-        scrollTrigger: { trigger: '#final-cta', start: 'top 85%' },
-        opacity: 0, y: 28, duration: 0.6, ease: 'power2.out'
-      })
-
-      /* Testimonials */
-      gsap.utils.toArray('.testi-card').forEach((card, i) => {
-        gsap.fromTo(card,
-          { opacity: 0, y: 22 },
-          {
-            scrollTrigger: { trigger: '.testi-grid', start: 'top 85%' },
-            opacity: 1, y: 0, duration: 0.5, delay: i * 0.1, ease: 'power2.out'
-          }
-        )
-      })
-
-    } else {
-      /* GSAP failed to load — show everything immediately */
-      ;['#hero-badge', '.hero-title', '.hero-subtitle', '#hero-ctas', '#hero-stats']
-        .forEach(sel => document.querySelectorAll(sel).forEach(el => (el.style.opacity = '1')))
-      document.querySelectorAll('.bento-card').forEach(el => (el.style.opacity = '1'))
+      gsap.utils.toArray('#social-proof .brut-card').forEach((card, i) => {
+        gsap.from(card, {
+          scrollTrigger: { trigger: card, start: 'top 90%' },
+          y: 30, opacity: 0, duration: 0.5, delay: i * 0.08, ease: 'power2.out'
+        });
+      });
     }
   </script>
 </body>
