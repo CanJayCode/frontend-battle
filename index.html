@@ -644,7 +644,20 @@
     /* Context transfer — ResizeObserver */
     const rObs = new ResizeObserver(([entry]) => {
       const isMobile = entry.contentRect.width <= 768;
-      if (isMobile) renderAccordion();
+      if (isMobile) {
+        renderAccordion();
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            const panels = document.querySelectorAll('.accordion-content');
+            if (panels[activeIndex]) {
+              panels[activeIndex].style.maxHeight = '0';
+              requestAnimationFrame(() => {
+                panels[activeIndex].style.maxHeight = '500px';
+              });
+            }
+          });
+        });
+      }
     });
     rObs.observe(document.documentElement);
 
