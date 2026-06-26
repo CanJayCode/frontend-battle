@@ -701,28 +701,28 @@
         duration: 1.2, y: 100, opacity: 0, skewY: 7, stagger: 0.2, ease: 'power4.out'
       });
 
-      gsap.from('.sharp-btn', {
+      gsap.from('#hero-cta-btn, #hero-secondary-btn, #final-cta-btn', {
         duration: 0.8, scale: 0.8, opacity: 0, delay: 0.5, ease: 'back.out(1.7)'
       });
 
-      gsap.utils.toArray('.brut-card').forEach(card => {
+      gsap.utils.toArray('#desktop-bento .brut-card').forEach((card, i) => {
         gsap.from(card, {
-          scrollTrigger: { trigger: card, start: 'top 90%', toggleActions: 'play none none none' },
-          y: 50, opacity: 0, rotate: (Math.random() - 0.5) * 6, duration: 0.8, ease: 'power2.out'
+          scrollTrigger: { trigger: card, start: 'top 90%' },
+          y: 50, opacity: 0, rotate: (Math.random() - 0.5) * 6, duration: 0.8, delay: i * 0.1, ease: 'power2.out'
         });
       });
 
       gsap.utils.toArray('.pricing-grid article').forEach((card, i) => {
         gsap.from(card, {
           scrollTrigger: { trigger: card, start: 'top 85%' },
-          y: 40, opacity: 0, duration: 0.6, delay: i * 0.1, ease: 'power2.out'
+          y: 40, opacity: 0, duration: 0.6, delay: i * 0.15, ease: 'power2.out'
         });
       });
 
       gsap.utils.toArray('#social-proof .brut-card').forEach((card, i) => {
         gsap.from(card, {
           scrollTrigger: { trigger: card, start: 'top 90%' },
-          y: 30, opacity: 0, duration: 0.5, delay: i * 0.08, ease: 'power2.out'
+          y: 30, opacity: 0, duration: 0.5, delay: i * 0.1, ease: 'power2.out'
         });
       });
     }
