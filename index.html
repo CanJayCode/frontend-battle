@@ -82,7 +82,7 @@
     .brut-card {
       border: 2px solid var(--oceanic-noir);
       box-shadow: 8px 8px 0 0 var(--oceanic-noir);
-      transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+      transition: transform 0.3s cubic-bezier(0.4,0,0.2,1), box-shadow 0.3s cubic-bezier(0.4,0,0.2,1);
       background: white;
       position: relative;
     }
@@ -110,7 +110,7 @@
       padding: 1rem 2rem; border: 2px solid var(--oceanic-noir);
       box-shadow: 6px 6px 0 var(--oceanic-noir);
       font-family: var(--font-heading); font-weight: 700;
-      transition: all 0.2s;
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
     }
     .sharp-btn:hover {
       transform: translate(-2px,-2px);
@@ -705,8 +705,9 @@
         duration: 1.2, y: 100, opacity: 0, skewY: 7, stagger: 0.2, ease: 'power4.out'
       });
 
-      gsap.from('#hero-cta-btn, #hero-secondary-btn, #final-cta-btn', {
-        duration: 0.8, scale: 0.8, opacity: 0, delay: 0.5, ease: 'back.out(1.7)'
+      gsap.set('#hero-cta-btn, #hero-secondary-btn, #final-cta-btn', { opacity: 0, scale: 0.8 });
+      gsap.to('#hero-cta-btn, #hero-secondary-btn, #final-cta-btn', {
+        duration: 0.8, scale: 1, opacity: 1, delay: 0.5, ease: 'back.out(1.7)'
       });
 
       gsap.utils.toArray('#desktop-bento .brut-card').forEach((card, i) => {
